@@ -172,20 +172,14 @@
     line-height:1.2;margin:0 0 12px;letter-spacing:-.01em}
   .archive-callout p{color:var(--bone-2);margin:0;font-size:15px}
 
-  /* funders / logo slider */
-  .funders{text-align:center;overflow:hidden}
+  /* funders / logo row */
+  .funders{text-align:center}
   .funders .lab{font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:36px}
-  .fslider{position:relative;overflow:hidden;width:100%}
-  .fslider::before,.fslider::after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
-  .fslider::before{left:0;background:linear-gradient(to right,var(--ink) 0%,rgba(22,21,20,0) 100%)}
-  .fslider::after{right:0;background:linear-gradient(to left,var(--ink) 0%,rgba(22,21,20,0) 100%)}
-  .ftrack{display:flex;align-items:center;gap:72px;width:max-content;animation:logoScroll 20s linear infinite;position:relative;z-index:1}
-  .ftrack:hover{animation-play-state:paused}
-  .flogo{height:120px;width:auto;flex-shrink:0}
-  @keyframes logoScroll{
-    0%{transform:translateX(0)}
-    100%{transform:translateX(-50%)}
-  }
+  .frow{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+  .flogo{display:flex;align-items:center;justify-content:center;
+    background:rgba(238,237,233,.04);border:1px solid rgba(238,237,233,.1);
+    border-radius:4px;padding:18px 28px;height:110px;width:200px}
+  .flogo img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain}
 
   /* footer */
   footer.site{background:var(--char2);border-top:1px solid var(--line);padding:72px 0 36px}
@@ -463,25 +457,16 @@
     <div class="wrap">
       <div class="lab">Supported by</div>
     </div>
-    <div class="fslider">
-      <div class="ftrack">
-        <img class="flogo" src="images/supported-by/Fakugesi.svg" alt="Fakugesi">
-        <img class="flogo" src="images/supported-by/Kingdom%20of%20the%20Netherlands.svg" alt="Kingdom of the Netherlands">
-        <img class="flogo" src="images/supported-by/Nati.svg" alt="Nati">
-        <img class="flogo" src="images/supported-by/National%20Arts%20Council.svg" alt="National Arts Council">
-        <img class="flogo" src="images/supported-by/National%20Lotteries%20Commission.svg" alt="National Lotteries Commission">
-        <img class="flogo" src="images/supported-by/Pace.svg" alt="Pace">
-        <img class="flogo" src="images/supported-by/Virtual%20National%20Arts%20Festival.svg" alt="Virtual National Arts Festival">
-        <img class="flogo" src="images/supported-by/Vrystaat%20Kunstefees.svg" alt="Vrystaat Kunstefees">
-        <!-- Duplicate set for seamless loop -->
-        <img class="flogo" src="images/supported-by/Fakugesi.svg" alt="Fakugesi">
-        <img class="flogo" src="images/supported-by/Kingdom%20of%20the%20Netherlands.svg" alt="Kingdom of the Netherlands">
-        <img class="flogo" src="images/supported-by/Nati.svg" alt="Nati">
-        <img class="flogo" src="images/supported-by/National%20Arts%20Council.svg" alt="National Arts Council">
-        <img class="flogo" src="images/supported-by/National%20Lotteries%20Commission.svg" alt="National Lotteries Commission">
-        <img class="flogo" src="images/supported-by/Pace.svg" alt="Pace">
-        <img class="flogo" src="images/supported-by/Virtual%20National%20Arts%20Festival.svg" alt="Virtual National Arts Festival">
-        <img class="flogo" src="images/supported-by/Vrystaat%20Kunstefees.svg" alt="Vrystaat Kunstefees">
+    <div class="wrap">
+      <div class="frow">
+        <div class="flogo"><img src="images/supported-by/Fakugesi.svg" alt="Fakugesi"></div>
+        <div class="flogo"><img src="images/supported-by/Kingdom%20of%20the%20Netherlands.svg" alt="Kingdom of the Netherlands"></div>
+        <div class="flogo"><img src="images/supported-by/Nati.svg" alt="Nati"></div>
+        <div class="flogo"><img src="images/supported-by/National%20Arts%20Council.svg" alt="National Arts Council"></div>
+        <div class="flogo"><img src="images/supported-by/National%20Lotteries%20Commission.svg" alt="National Lotteries Commission"></div>
+        <div class="flogo"><img src="images/supported-by/Pace.svg" alt="Pace"></div>
+        <div class="flogo"><img src="images/supported-by/Virtual%20National%20Arts%20Festival.svg" alt="Virtual National Arts Festival"></div>
+        <div class="flogo"><img src="images/supported-by/Vrystaat%20Kunstefees.svg" alt="Vrystaat Kunstefees"></div>
       </div>
     </div>
   </section>

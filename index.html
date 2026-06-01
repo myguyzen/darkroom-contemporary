@@ -176,10 +176,14 @@
   .funders{text-align:center}
   .funders .lab{font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:36px}
   .frow{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
-  .flogo{display:flex;align-items:center;justify-content:center;
-    background:rgba(238,237,233,.04);border:1px solid rgba(238,237,233,.1);
-    border-radius:4px;padding:18px 28px;height:110px;width:200px}
-  .flogo img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain}
+  .flogo{display:flex;align-items:center;justify-content:center;position:relative;
+    background:rgba(238,237,233,.06);border:1px solid rgba(238,237,233,.1);
+    border-radius:4px;padding:18px 28px;height:110px;width:200px;
+    transition:background .3s,border-color .3s}
+  .flogo img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain;
+    filter:grayscale(1) brightness(1.8) opacity(0.55);transition:filter .3s}
+  .flogo:hover{background:#e8e6e1;border-color:transparent}
+  .flogo:hover img{filter:none}
 
   /* footer */
   footer.site{background:var(--char2);border-top:1px solid var(--line);padding:72px 0 36px}
@@ -459,14 +463,28 @@
     </div>
     <div class="wrap">
       <div class="frow">
+        <div class="flogo"><img src="images/supported-by/National%20Lotteries%20Commission.svg" alt="National Lotteries Commission"></div>
+        <div class="flogo"><img src="images/supported-by/Baxter%20Theater%20Centre.svg" alt="Baxter Theater Centre"></div>
+        <div class="flogo"><img src="images/supported-by/Creativate.svg" alt="Creativate"></div>
+        <div class="flogo"><img src="images/supported-by/Department%20of%20Sports%2C%20Arts%20and%20Culture%20-%20Republic%20of%20South%20Africa.svg" alt="Department of Sports, Arts and Culture"></div>
+        <div class="flogo"><img src="images/supported-by/Disability%20Workshop%20Development%20Enterprise.svg" alt="Disability Workshop Development Enterprise"></div>
+        <div class="flogo"><img src="images/supported-by/F%20Conrad%20and%20Associates.svg" alt="F Conrad and Associates"></div>
         <div class="flogo"><img src="images/supported-by/Fakugesi.svg" alt="Fakugesi"></div>
+        <div class="flogo"><img src="images/supported-by/Institute%20for%20Creative%20Arts.svg" alt="Institute for Creative Arts"></div>
         <div class="flogo"><img src="images/supported-by/Kingdom%20of%20the%20Netherlands.svg" alt="Kingdom of the Netherlands"></div>
+        <div class="flogo"><img src="images/supported-by/Location%20gallery.svg" alt="Location gallery"></div>
         <div class="flogo"><img src="images/supported-by/Nati.svg" alt="Nati"></div>
         <div class="flogo"><img src="images/supported-by/National%20Arts%20Council.svg" alt="National Arts Council"></div>
-        <div class="flogo"><img src="images/supported-by/National%20Lotteries%20Commission.svg" alt="National Lotteries Commission"></div>
+        <div class="flogo"><img src="images/supported-by/ORMS%20and%20Stellar%20Winery.svg" alt="ORMS and Stellar Winery"></div>
         <div class="flogo"><img src="images/supported-by/Pace.svg" alt="Pace"></div>
+        <div class="flogo"><img src="images/supported-by/Silent%20Events.svg" alt="Silent Events"></div>
+        <div class="flogo"><img src="images/supported-by/Sunshine%20Co.svg" alt="Sunshine Co"></div>
+        <div class="flogo"><img src="images/supported-by/The%20Centre%20for%20the%20Less%20Good%20Idea.svg" alt="The Centre for the Less Good Idea"></div>
+        <div class="flogo"><img src="images/supported-by/Thingking.svg" alt="Thingking"></div>
         <div class="flogo"><img src="images/supported-by/Virtual%20National%20Arts%20Festival.svg" alt="Virtual National Arts Festival"></div>
         <div class="flogo"><img src="images/supported-by/Vrystaat%20Kunstefees.svg" alt="Vrystaat Kunstefees"></div>
+        <div class="flogo"><img src="images/supported-by/Western%20Cape%20Goverment%20-%20Cultural%20Affairs%20and%20Sport.svg" alt="Western Cape Government"></div>
+        <div class="flogo"><img src="images/supported-by/YoungBlood%20Africa.svg" alt="YoungBlood Africa"></div>
       </div>
     </div>
   </section>

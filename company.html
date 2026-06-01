@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Darkroom Contemporary</title>
+<meta name="description" content="Darkroom Contemporary is a Cape Town–based contemporary performance creation company founded in 2010 by Louise Coetzer and Oscar O'Ryan. Live performance, screen dance, and dance film made to tour internationally.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161514; --char:#1c1b1a; --char2:#232220; --char3:#2b2926;
+    --bone:#EEEDE9; --bone-2:#d8d6cf; --bone-dim:#a4a199;
+    --maroon:#9a3340; --maroon-deep:#6B2737; --clay:#c98a4b; --sand:#e7ddc9; --sand-ink:#5a4a2f;
+    --line:rgba(238,237,233,.14); --line-2:rgba(238,237,233,.28);
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --maxw:1240px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--sans);
+    font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;letter-spacing:.005em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .serif{font-family:var(--serif)}
+  .kicker{font:500 12px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim)}
+
+  /* shared placeholder boxes */
+  .ph-tile{position:absolute;inset:0;background:linear-gradient(135deg,#2a2826 0%,#1a1817 100%);
+    border:1px dashed rgba(238,237,233,.2);display:flex;align-items:center;justify-content:center;
+    text-align:center;overflow:hidden}
+  .ph-tile::before{content:"";position:absolute;inset:8px;border:1px dashed rgba(238,237,233,.08);pointer-events:none}
+  .ph-tile::after{content:"◇";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    font:300 56px/1 var(--serif);color:rgba(238,237,233,.12)}
+  .ph-tile .ph-label{position:relative;z-index:1;font:500 10px/1.4 var(--sans);
+    letter-spacing:.16em;text-transform:uppercase;color:rgba(238,237,233,.55);padding:0 20px}
+
+  /* utility bar */
+  .ubar{border-bottom:1px solid var(--line);font-size:12px;color:var(--bone-dim)}
+  .ubar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}
+  .ubar .r{display:flex;gap:18px;align-items:center}
+  .ubar a:hover{color:var(--bone)}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(22,21,20,.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font:600 19px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bone)}
+  .logo small{display:block;font:400 9.5px/1 var(--sans);letter-spacing:.42em;color:var(--bone-dim);margin-top:5px}
+  nav.links{display:flex;gap:26px;align-items:center}
+  nav.links a{font:500 13px/1 var(--sans);letter-spacing:.02em;color:var(--bone-2);position:relative;padding:6px 0}
+  nav.links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1.5px;background:var(--maroon);transition:right .28s ease}
+  nav.links a:hover{color:var(--bone)}
+  nav.links a:hover::after{right:0}
+  nav.links a.active{color:var(--bone)}
+  nav.links a.active::after{right:0}
+  .btn{display:inline-flex;align-items:center;gap:8px;font:500 13px/1 var(--sans);letter-spacing:.04em;
+    padding:11px 20px;border-radius:2px;border:1px solid var(--maroon);background:var(--maroon);color:#fff;
+    transition:background .2s,transform .2s}
+  .btn:hover{background:var(--maroon-deep);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--bone);border-color:var(--line-2)}
+  .btn.ghost:hover{border-color:var(--bone);background:transparent}
+  .burger{display:none;background:none;border:0;color:var(--bone);font-size:24px;cursor:pointer}
+  .tlink{display:inline-flex;align-items:center;gap:9px;font:500 13px/1 var(--sans);letter-spacing:.04em;color:var(--bone)}
+  .tlink .ar{transition:transform .25s}
+  .tlink:hover .ar{transform:translateX(5px)}
+
+  /* page hero */
+  .pg-hero{position:relative;height:clamp(400px,60vh,620px);overflow:hidden;
+    background:#0e0d0c;display:flex;align-items:flex-end}
+  .pg-hero .bg{position:absolute;inset:0;
+    background:radial-gradient(130% 120% at 65% 15%,#3a2a2c 0%,#241c1d 45%,#100d0d 100%)}
+  .pg-hero .bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.04) 40%,rgba(14,13,12,.9) 100%)}
+  .pg-hero .ghost{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font:300 96px/1 var(--serif);color:rgba(238,237,233,.04);letter-spacing:.3em;
+    text-transform:uppercase;pointer-events:none;white-space:nowrap}
+  .pg-hero .inner{position:relative;z-index:2;width:100%;padding-bottom:56px}
+  .pg-hero .tag{display:inline-block;font:500 11px/1 var(--sans);letter-spacing:.2em;
+    text-transform:uppercase;color:var(--bone);border:1px solid var(--line-2);
+    border-radius:2px;padding:6px 11px;margin-bottom:18px}
+  .pg-hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(36px,5.5vw,72px);
+    line-height:.98;letter-spacing:-.01em;margin:0 0 16px;max-width:20ch}
+  .pg-hero h1 em{font-style:italic}
+  .pg-hero .sub{font-size:16px;color:var(--bone-2);max-width:95ch}
+  .ph-tag{position:absolute;top:20px;left:28px;z-index:5;font:500 10px/1 var(--sans);
+    letter-spacing:.18em;text-transform:uppercase;color:rgba(238,237,233,.55);
+    background:rgba(0,0,0,.35);border:1px dashed rgba(238,237,233,.25);
+    padding:7px 12px;border-radius:2px}
+
+  /* breadcrumb */
+  .breadcrumb{border-bottom:1px solid var(--line);font-size:12px;color:var(--bone-dim)}
+  .breadcrumb .wrap{display:flex;align-items:center;gap:10px;height:38px}
+  .breadcrumb a:hover{color:var(--bone)}
+  .breadcrumb .sep{opacity:.4}
+  .breadcrumb .cur{color:var(--bone)}
+
+  /* section scaffold */
+  section{padding:88px 0}
+  .eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:48px}
+  .eyebrow .num{font:500 12px/1 var(--sans);letter-spacing:.1em;color:var(--maroon)}
+  .eyebrow h2{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3.4vw,40px);margin:0;letter-spacing:-.01em}
+  .eyebrow .rule{flex:1;height:1px;background:var(--line)}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1fr 2.2fr;gap:72px;align-items:start}
+  .about-aside .pull{font-family:var(--serif);font-weight:300;font-style:italic;
+    font-size:clamp(20px,2.2vw,26px);line-height:1.4;color:var(--bone);margin:0}
+  .about-body p{font-size:16px;color:var(--bone-2);line-height:1.8;margin:0 0 18px}
+  .about-body p:last-of-type{margin-bottom:0}
+  .about-body .cta-row{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+
+  /* pillars */
+  .pillars-wrap{background:var(--char);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+  .pillar{padding:64px 44px;position:relative;overflow:hidden;border-right:1px solid var(--line)}
+  .pillar:last-child{border-right:none}
+  .pillar .ghost-num{position:absolute;right:-12px;bottom:-20px;
+    font:300 200px/1 var(--serif);color:rgba(238,237,233,.03);
+    letter-spacing:-.04em;pointer-events:none;line-height:.85}
+  .pillar-img{position:relative;aspect-ratio:4/3;margin-bottom:28px}
+  .pillar .num{font:500 11px/1 var(--sans);letter-spacing:.2em;color:var(--maroon);
+    text-transform:uppercase;margin-bottom:22px}
+  .pillar h3{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.4vw,32px);
+    line-height:1.2;margin:0 0 16px;letter-spacing:-.01em}
+  .pillar .rule{width:40px;height:1.5px;background:var(--maroon);margin-bottom:20px}
+  .pillar p{font-size:15px;color:var(--bone-2);line-height:1.75;margin:0 0 22px;max-width:36ch}
+  .pillar .venues{font:400 11.5px/1.7 var(--sans);letter-spacing:.03em;color:var(--bone-dim)}
+
+  /* repertoire */
+  .rep-item{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+    padding:72px 0;border-bottom:1px solid var(--line)}
+  .rep-item:first-child{padding-top:0}
+  .rep-item.rev .rep-img{order:2}
+  .rep-item.rev .rep-text{order:1}
+  .rep-img{position:relative;aspect-ratio:4/3}
+  .rep-text .year-tag{font:500 11px/1 var(--sans);letter-spacing:.2em;color:var(--maroon);
+    text-transform:uppercase;margin-bottom:16px}
+  .rep-text h3{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3vw,38px);
+    line-height:1.05;letter-spacing:-.01em;margin:0 0 20px}
+  .rep-text h3 em{font-style:italic}
+  .rep-text p{font-size:15.5px;color:var(--bone-2);line-height:1.75;max-width:46ch;margin:0 0 26px}
+  .rep-text .accolades{font:400 12px/1.7 var(--sans);color:var(--bone-dim);letter-spacing:.03em;
+    border-left:2px solid var(--maroon);padding-left:12px;margin-bottom:26px}
+
+  /* founders & team */
+  .founders-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+  .person-portrait{position:relative;aspect-ratio:3/4;overflow:hidden;margin-bottom:16px}
+  .person-name{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.1;margin:0 0 5px}
+  .person-role{font:500 10.5px/1 var(--sans);letter-spacing:.16em;color:var(--maroon);
+    text-transform:uppercase;margin-bottom:12px}
+  .person-bio{font-size:14px;color:var(--bone-2);line-height:1.7}
+  .person-bio p{margin:0 0 10px}
+  .person-bio p:last-child{margin:0}
+  .person-link{display:inline-flex;align-items:center;gap:6px;font:500 12px/1 var(--sans);
+    letter-spacing:.08em;color:var(--bone-dim);margin-top:12px;transition:color .2s}
+  .person-link:hover{color:var(--bone)}
+  .team-grid .person-name{font-size:16px}
+  .team-grid .person-role{font-size:10px;margin-bottom:0}
+
+  /* press */
+  .press{background:var(--char);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .quotebox{max-width:900px;margin:0 auto;text-align:center;min-height:170px;position:relative}
+  .quote{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;
+    display:flex;flex-direction:column;justify-content:center}
+  .quote.on{opacity:1;position:relative}
+  .quote blockquote{font-family:var(--serif);font-weight:300;font-style:italic;
+    font-size:clamp(22px,3vw,32px);line-height:1.3;margin:0 0 22px;letter-spacing:-.01em}
+  .quote cite{font:500 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;
+    color:var(--maroon);font-style:normal}
+  .qdots{display:flex;gap:9px;justify-content:center;margin-top:34px}
+  .qdots button{width:8px;height:8px;border-radius:50%;border:0;background:var(--line-2);cursor:pointer}
+  .qdots button.on{background:var(--maroon)}
+
+  /* management / board */
+  .lead-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start}
+  .lead-col h3{font-family:var(--serif);font-weight:300;font-size:22px;margin:0 0 26px;letter-spacing:-.01em}
+  .lead-person{display:flex;justify-content:space-between;align-items:baseline;
+    padding:16px 0;border-bottom:1px solid var(--line)}
+  .lead-person:first-of-type{border-top:1px solid var(--line)}
+  .lead-person .l-name{font:600 13.5px/1 var(--sans);letter-spacing:.02em}
+  .lead-person .l-title{font:400 12px/1 var(--sans);color:var(--bone-dim)}
+  .npo-box{background:var(--char);border:1px solid var(--line);padding:28px;margin-top:28px}
+  .npo-box .npo-label{font:600 10px/1 var(--sans);letter-spacing:.2em;
+    text-transform:uppercase;color:var(--bone-dim);margin-bottom:16px}
+  .npo-box p{font-size:13px;color:var(--bone-2);line-height:1.65;margin:0 0 6px}
+  .npo-box p:last-child{margin:0}
+
+  /* subscribe + contact */
+  .subscribe-contact{background:var(--char2);border-top:1px solid var(--line)}
+  .sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:80px 0}
+  .sc-col h3{font-family:var(--serif);font-weight:300;font-size:26px;margin:0 0 12px;letter-spacing:-.01em}
+  .sc-col .sub{font-size:15px;color:var(--bone-2);margin:0 0 28px;max-width:42ch;line-height:1.65}
+  .signup{display:flex;border:1px solid var(--line-2);border-radius:2px;overflow:hidden;
+    margin:0 0 12px;max-width:420px}
+  .signup input{flex:1;background:transparent;border:0;color:var(--bone);
+    padding:14px 16px;font:400 14px var(--sans);outline:none}
+  .signup input::placeholder{color:#6f6c66}
+  .signup button{background:var(--maroon);color:#fff;border:0;padding:0 20px;
+    font:500 13px var(--sans);cursor:pointer;white-space:nowrap}
+  .signup button:hover{background:var(--maroon-deep)}
+  .consent{font-size:11.5px;color:#7f7c75;max-width:420px;line-height:1.5}
+  .consent input{vertical-align:-1px;margin-right:7px;accent-color:var(--maroon)}
+  .contact-detail{margin-bottom:22px}
+  .contact-detail .cd-label{font:600 10px/1 var(--sans);letter-spacing:.2em;
+    text-transform:uppercase;color:var(--bone-dim);margin-bottom:8px}
+  .contact-detail .cd-val{font-size:15px;color:var(--bone-2)}
+  .contact-detail a{color:var(--bone-2);border-bottom:1px solid var(--line-2);
+    transition:color .2s,border-color .2s}
+  .contact-detail a:hover{color:var(--bone);border-color:var(--bone)}
+
+  /* footer */
+  footer.site{background:var(--char2);border-top:1px solid var(--line);padding:56px 0 36px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:48px;
+    padding-bottom:48px;border-bottom:1px solid var(--line)}
+  .fcol h4{font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;
+    color:var(--bone-dim);margin:0 0 18px}
+  .fcol p,.fcol a{font-size:14px;color:var(--bone-2);margin:0 0 10px}
+  .fcol a{display:block}
+  .fcol a:hover{color:var(--bone)}
+  .fuel a{display:inline-flex;align-items:center;gap:8px;color:var(--clay);
+    font:500 13px var(--sans);letter-spacing:.03em}
+  .fbottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;
+    gap:14px;padding-top:26px;font-size:12px;color:var(--bone-dim)}
+  .fsoc{display:flex;gap:18px}
+  .fsoc a:hover{color:var(--bone)}
+
+  /* mobile */
+  .mmenu{display:none}
+  @media(max-width:1000px){
+    nav.links{display:none}
+    .burger{display:block}
+    .mmenu.show{display:block;border-top:1px solid var(--line);background:var(--char)}
+    .mmenu a{display:block;padding:15px 28px;border-bottom:1px solid var(--line);
+      color:var(--bone-2);font:500 14px var(--sans)}
+    .about-grid{grid-template-columns:1fr;gap:40px}
+    .pillars-grid{grid-template-columns:1fr}
+    .pillar{border-right:none;border-bottom:1px solid var(--line);padding:48px 28px}
+    .pillar:last-child{border-bottom:none}
+    .rep-item{grid-template-columns:1fr;gap:28px;padding:48px 0}
+    .rep-item.rev .rep-img{order:unset}
+    .rep-item.rev .rep-text{order:unset}
+    .founders-grid{grid-template-columns:1fr;gap:36px}
+    .team-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+    .lead-grid{grid-template-columns:1fr;gap:36px}
+    .sc-grid{grid-template-columns:1fr;gap:40px;padding:56px 0}
+    .fgrid{grid-template-columns:1fr;gap:34px}
+  }
+  @media(max-width:560px){
+    .team-grid{grid-template-columns:1fr}
+    .pg-hero{height:clamp(360px,55vh,500px)}
+  }
+</style>
+</head>
+<body>
+
+  <div class="ubar">
+    <div class="wrap">
+      <span>Cape Town · contemporary performance creation, made to tour</span>
+      <span class="r">
+        <a href="#">EN</a>
+        <a href="#subscribe">Subscribe</a>
+        <a href="#">Instagram</a>
+      </span>
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="logo" href="/">Darkroom<small>Contemporary</small></a>
+      <nav class="links">
+        <a href="/">Home</a>
+        <a href="/company" class="active">Darkroom Contemporary</a>
+        <a href="/institute">Institute of Curiosity</a>
+        <a href="/fuel-the-lab">Fuel the Lab</a>
+      </nav>
+      <a class="btn" href="#">Book</a>
+      <button class="burger" aria-label="Open menu" onclick="document.getElementById('mm').classList.toggle('show')">☰</button>
+    </div>
+    <div class="mmenu" id="mm">
+      <a href="/">Home</a>
+      <a href="/company">Darkroom Contemporary</a>
+      <a href="/institute">Institute of Curiosity</a>
+      <a href="/fuel-the-lab">Fuel the Lab</a>
+    </div>
+  </header>
+
+  <div class="breadcrumb">
+    <div class="wrap">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <span class="cur">Darkroom Contemporary</span>
+    </div>
+  </div>
+
+  <div class="pg-hero">
+    <div class="bg"></div>
+    <div class="ghost">DARKROOM</div>
+    <span class="ph-tag">Image placeholder · Hero</span>
+    <div class="wrap inner">
+      <span class="tag">Darkroom Contemporary</span>
+      <h1 class="serif">Fifteen years making work<br>that <em>tours</em>.</h1>
+      <p class="sub">Cape Town–based contemporary performance creation. Live work, screen dance and dance film —<br>built for the stage and the world beyond it.</p>
+    </div>
+  </div>
+
+  <!-- 01 ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="eyebrow">
+        <span class="num">01</span>
+        <h2 class="serif">About the company</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="about-grid">
+        <div class="about-aside">
+          <p class="pull serif">"We are building the worlds we want to see: meaningful work for artists, art that speaks to our time, and spaces that challenge the limits of what is possible."</p>
+        </div>
+        <div class="about-body">
+          <p>Darkroom Contemporary is a Cape Town–based contemporary performance creation company, founded in 2010 by Louise Coetzer and Oscar O'Ryan. The company makes live performance, dance film and screen dance — work created to tour, and work created to last.</p>
+          <p>The practice sits at the intersection of choreography and new technology. Over fifteen years, Darkroom has integrated kinetic motion sensing, full dome projection, interactive projection mapping, telematic performance, artificial intelligence and experimental sound into its live and screen-based works — not as novelty, but as artistic language. Every integration serves the choreography.</p>
+          <p>The work has been presented at Ars Electronica (Linz), Cinedans (Amsterdam), POOL Movement Art Film Festival (Berlin), the South African State Theatre, Zeits MOCAA, Norval Foundation, the British Film Institute (London), and Third Coast Dance Film Festival (Texas). Screen dance film <em>Blue Funk</em> was the first South African work selected for Cinedans, winning Best of Festival at Third Coast 2024 and Best Female Director at Mirada Corta 2025 (Mexico City).</p>
+          <p>Darkroom is a registered Non-Profit Organisation and Public Benefit Organisation. In June 2026, the company opened a permanent studio on Bree Street, Cape Town — home of the Institute of Curiosity, its platform for movement practice, emerging artists, public discourse and screen dance.</p>
+          <div class="cta-row">
+            <a class="btn" href="#contact">Touring enquiries</a>
+            <a class="btn ghost" href="#repertoire">See the work</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 PILLARS OF PRACTICE -->
+  <div class="pillars-wrap" id="practice">
+    <div class="wrap" style="padding-top:0;padding-bottom:0">
+      <div style="padding:56px 0 32px;border-bottom:1px solid var(--line)">
+        <div class="eyebrow" style="margin-bottom:0">
+          <span class="num">02</span>
+          <h2 class="serif">Pillars of practice</h2>
+          <span class="rule"></span>
+        </div>
+      </div>
+    </div>
+    <div class="pillars-grid">
+
+      <div class="pillar">
+        <div class="ghost-num">01</div>
+        <div class="pillar-img"><div class="ph-tile"><span class="ph-label">Image · Performance</span></div></div>
+        <div class="num">01 · Performance</div>
+        <h3 class="serif">Live work and interdisciplinary production.</h3>
+        <div class="rule"></div>
+        <p>Touring productions, site-specific work and public art interventions — each made with choreography at the centre and technology as a creative partner. Works have incorporated kinetic motion sensing, full dome projection, interactive projection mapping, telematic performance, gaming, interactive sound and AI.</p>
+        <div class="venues">Ars Electronica (Linz) · National Arts Festival · South African State Theatre · Zeits MOCAA · Norval Foundation · Centre for the Less Good Idea · Fa'kugesi Festival · Pan African Creative Exchange · Kucheza Afrika · Ubumuntu Arts Festival (Kigali) · Dance Umbrella</div>
+      </div>
+
+      <div class="pillar">
+        <div class="ghost-num">02</div>
+        <div class="pillar-img"><div class="ph-tile"><span class="ph-label">Image · Screen Dance</span></div></div>
+        <div class="num">02 · Screen Dance</div>
+        <h3 class="serif">Dance film and screen-based work for global audiences.</h3>
+        <div class="rule"></div>
+        <p>An extensive body of dance film alongside the company's live repertoire — making the work accessible through film and digital media. Screen dance is not a documentation of performance; it is its own form, made for the camera and the screen.</p>
+        <div class="venues">POOL Tanzfilm Festival (Berlin) · Cinedans (Amsterdam) · British Film Institute (London) · Third Coast Dance Film Festival (Texas) · Mirada Corta (Mexico City) · Dance Days Chania · Festival Miden (Greece) · Denton Black Film Festival · 40 North Festival (California) · Foreign Exchange (Paris) · Global Art and Moving Images Awards (Finland)</div>
+      </div>
+
+      <div class="pillar">
+        <div class="ghost-num">03</div>
+        <div class="pillar-img"><div class="ph-tile"><span class="ph-label">Image · Development</span></div></div>
+        <div class="num">03 · Development</div>
+        <h3 class="serif">Growing the next generation of South African dance artists.</h3>
+        <div class="rule"></div>
+        <p>As a registered NPO, Darkroom continuously expands access to dance through arts education, paid apprenticeships, youth development, and public art activations. Development is not an afterthought — it is the third strand of everything the company makes, woven into the structure of every project.</p>
+        <div class="venues">Youth development · Paid apprenticeships · Screendance labs · Arts entrepreneurship workshops · Free public activations · Schools performances · Mentorships and artist talks · University partnerships (UCT, UJ, UFS, Rhodes)</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 03 SELECTED REPERTOIRE -->
+  <section id="repertoire">
+    <div class="wrap">
+      <div class="eyebrow">
+        <span class="num">03</span>
+        <h2 class="serif">Selected repertoire</h2>
+        <span class="rule"></span>
+        <span class="kicker">2020–2026</span>
+      </div>
+
+      <div class="rep-item">
+        <div class="rep-img"><div class="ph-tile"><span class="ph-label">Image · autoplay</span></div></div>
+        <div class="rep-text">
+          <div class="year-tag">AI Opera · 2024 / 2026</div>
+          <h3 class="serif"><em>autoplay</em></h3>
+          <p>South Africa's first AI opera. <em>autoplay</em> uses artificial intelligence as a choreographic partner — a live interdisciplinary performance work asking what happens when the machine learns to move. Developed with the South African State Theatre; touring nationally and internationally in 2026, with confirmed presentations pending across South Africa, Germany and the USA.</p>
+          <a class="tlink" href="#">Full production details <span class="ar">→</span></a>
+        </div>
+      </div>
+
+      <div class="rep-item rev">
+        <div class="rep-img"><div class="ph-tile"><span class="ph-label">Image · Blue Funk</span></div></div>
+        <div class="rep-text">
+          <div class="year-tag">Screen dance · 2023</div>
+          <h3 class="serif"><em>Blue Funk</em></h3>
+          <p>The first South African screen dance work selected for Cinedans (Amsterdam). <em>Blue Funk</em> brought the company's film practice to one of the world's pre-eminent screen dance festivals, and went on to win Best of Festival at Third Coast Dance Film Festival 2024 (Texas) and Best Female Director at Mirada Corta 2025 (Mexico City).</p>
+          <div class="accolades">Best of Festival · Third Coast Dance Film Festival 2024 (Texas, USA)<br>Best Female Director · Mirada Corta 2025 (Mexico City)<br>Selected · Cinedans (Amsterdam, Netherlands)</div>
+          <a class="tlink" href="#">Full production details <span class="ar">→</span></a>
+        </div>
+      </div>
+
+      <div class="rep-item">
+        <div class="rep-img"><div class="ph-tile"><span class="ph-label">Image · e.id</span></div></div>
+        <div class="rep-text">
+          <div class="year-tag">New work · Premiere August 2026</div>
+          <h3 class="serif"><em>e.id</em></h3>
+          <p>A new interdisciplinary performance work co-produced with DOCK Art (Berlin). <em>e.id</em> asks what identity means when the body is digital, the archive is permanent, and the self is always in the feed. Premiering at the South African State Theatre (August 2026) and DOCK 11, Berlin.</p>
+          <a class="tlink" href="#">Production details forthcoming <span class="ar">→</span></a>
+        </div>
+      </div>
+
+      <div class="rep-item rev">
+        <div class="rep-img"><div class="ph-tile"><span class="ph-label">Image · blame it on the algorithm</span></div></div>
+        <div class="rep-text">
+          <div class="year-tag">Live performance · 2024</div>
+          <h3 class="serif"><em>blame it on the algorithm</em></h3>
+          <p>Commissioned for the Woordfees and the National Arts Festival curated programme, 2024. A performance work interrogating how algorithmic systems shape what we see, who we become, and what we believe we have chosen. Developed through Darkroom's research process and presented to full houses at both festivals.</p>
+          <a class="tlink" href="#">Full production details <span class="ar">→</span></a>
+        </div>
+      </div>
+
+      <div style="margin-top:8px;padding-top:36px;border-top:1px solid var(--line);display:flex;justify-content:flex-end">
+        <a class="tlink" href="#">Full archive — Phase 2 <span class="ar">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 FOUNDERS -->
+  <section id="founders" style="background:var(--char);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="eyebrow">
+        <span class="num">04</span>
+        <h2 class="serif">Founders</h2>
+        <span class="rule" style="background:rgba(238,237,233,.08)"></span>
+      </div>
+      <div class="founders-grid">
+
+        <div class="person">
+          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Louise Coetzer</span></div></div>
+          <div class="person-name serif">Louise Coetzer</div>
+          <div class="person-role">Executive Artistic Director · Choreographer</div>
+          <div class="person-bio">
+            <p>Louise Coetzer is a multidisciplinary dance artist working in choreography, site-specific performance, screendance, and digital and tech-based art. Her works grapple with the tensions between the physical and psychological — blending dance theatre with immersive installation, combining distinct physicality with intricately woven technological elements.</p>
+            <p>Her screen dance film <em>Blue Funk</em> was the first South African work selected for Cinedans (Netherlands), winning Best of Festival at Third Coast Dance Film Festival 2024 (Texas) and Best Female Director at Mirada Corta 2025 (Mexico City). Recent works include <em>autoplay</em>, South Africa's first AI opera; <em>ULTRA</em> for the South African State Theatre; and <em>blame it on the algorithm</em>, commissioned for the Woordfees and the National Arts Festival. She received the Artist Award 2022 at POOL Movement Art Festival (Berlin) and Most Innovative Contribution to Dance at the DCAS Cultural Affairs Awards 2023. She is a guest lecturer at UCT's Centre for Theatre, Dance and Performance Studies.</p>
+          </div>
+          <a class="person-link" href="http://www.louisecoetzer.com" target="_blank" rel="noopener">louisecoetzer.com <span>→</span></a>
+        </div>
+
+        <div class="person">
+          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Oscar O'Ryan</span></div></div>
+          <div class="person-name serif">Oscar O'Ryan</div>
+          <div class="person-role">Co-founder · Cinematographer · Visual Artist</div>
+          <div class="person-bio">
+            <p>Oscar O'Ryan (b. 1978, South Africa) is a cinematographer, photographer, visual artist and filmmaker. His work spans commissioned film, photo reportage, experimental video art and live production design — a practice held together by a commitment to cinematic precision and the language of the moving image.</p>
+            <p>As co-founder of Darkroom Contemporary, he merges visual media expertise with choreographic work, resulting in productions that operate equally on stage and screen. His films have screened across festivals internationally. Recent recognition includes the Artist Award 2022 at POOL Movement Art Film Festival (Berlin), Best Film Award at Denton Black Film Awards (USA) and Best International Shorts at Berlin Shorts Film Festival 2024 (Germany).</p>
+          </div>
+          <a class="person-link" href="#">Full biography <span>→</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 PRODUCTION TEAM -->
+  <section id="production">
+    <div class="wrap">
+      <div class="eyebrow">
+        <span class="num">05</span>
+        <h2 class="serif">Production</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="team-grid">
+        <div class="person">
+          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Robyn Pretorius</span></div></div>
+          <div class="person-name serif">Robyn Pretorius</div>
+          <div class="person-role">Company Creative Producer</div>
+        </div>
+        <div class="person">
+          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Natalie Fisher</span></div></div>
+          <div class="person-name serif">Natalie Fisher</div>
+          <div class="person-role">Rehearsal Director</div>
+        </div>
+        <div class="person">
+          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Yarisha Singh</span></div></div>
+          <div class="person-name serif">Yarisha Singh</div>
+          <div class="person-role">Rehearsal Director</div>
+        </div>
+        <div class="person">
+          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Darion Adams</span></div></div>
+          <div class="person-name serif">Darion Adams</div>
+          <div class="person-role">Rehearsal Director</div>
+        </div>
+        <div class="person">
+          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Donna Gungulo</span></div></div>
+          <div class="person-name serif">Donna Gungulo</div>
+          <div class="person-role">Fundraising &amp; Partnerships</div>
+        </div>
+        <div class="person">
+          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Renee Holleman</span></div></div>
+          <div class="person-name serif">Renee Holleman</div>
+          <div class="person-role">Partnerships Associate</div>
+        </div>
+        <div class="person">
+          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Nkosinathi Sangweni</span></div></div>
+          <div class="person-name serif">Nkosinathi Sangweni</div>
+          <div class="person-role">Project Co-Ordinator</div>
+        </div>
+        <div class="person">
+          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Dian Harcovecchio</span></div></div>
+          <div class="person-name serif">Dian Harcovecchio</div>
+          <div class="person-role">Resident Stage Manager</div>
+        </div>
+        <div class="person">
+          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Lukho Witbooi</span></div></div>
+          <div class="person-name serif">Lukho Witbooi</div>
+          <div class="person-role">Copywriting</div>
+        </div>
+        <div class="person">
+          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Otlile Lebelo</span></div></div>
+          <div class="person-name serif">Otlile Lebelo</div>
+          <div class="person-role">Administrative</div>
+        </div>
+        <div class="person">
+          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Zandile Salukazana</span></div></div>
+          <div class="person-name serif">Zandile Salukazana</div>
+          <div class="person-role">Digital Intern</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 MANAGEMENT / BOARD -->
+  <section id="management" style="background:var(--char);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="eyebrow">
+        <span class="num">06</span>
+        <h2 class="serif">Management</h2>
+        <span class="rule" style="background:rgba(238,237,233,.08)"></span>
+      </div>
+      <div class="lead-grid">
+        <div class="lead-col">
+          <h3 class="serif">Board of directors</h3>
+          <div class="lead-person">
+            <span class="l-name">[Board member]</span>
+            <span class="l-title">Chairperson</span>
+          </div>
+          <div class="lead-person">
+            <span class="l-name">[Board member]</span>
+            <span class="l-title">Director</span>
+          </div>
+          <div class="lead-person">
+            <span class="l-name">[Board member]</span>
+            <span class="l-title">Director</span>
+          </div>
+          <p style="font-size:12px;color:var(--bone-dim);margin-top:14px">Board details to be confirmed with Oscar and Louise before launch.</p>
+        </div>
+        <div class="lead-col">
+          <h3 class="serif">Company registration</h3>
+          <div class="npo-box">
+            <div class="npo-label">NPO &amp; PBO Credentials</div>
+            <p>Registration number: 089-552 NPO</p>
+            <p>SARS Public Benefit Organisation: 930 043 891</p>
+            <p>B-BBEE: Level 2 Contributor</p>
+            <p style="margin-top:12px">Registered address:<br>1702B Disa Park, Clifford Ave<br>Vredehoek, 8001<br>Cape Town, South Africa</p>
+            <p style="margin-top:12px">Studio &amp; public address:<br>Bree Street, Cape Town<br>(address to be confirmed)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 PRESS -->
+  <section class="press" id="press">
+    <div class="wrap">
+      <div class="eyebrow" style="justify-content:center;margin-bottom:48px">
+        <span class="num">07</span>
+        <h2 class="serif">In the press</h2>
+        <span class="rule" style="background:rgba(238,237,233,.08)"></span>
+      </div>
+      <div class="quotebox" id="quotes">
+        <div class="quote on"><blockquote class="serif">"A company that makes the body think."</blockquote><cite>Publication · 2024</cite></div>
+        <div class="quote"><blockquote class="serif">"Cape Town's most quietly uncompromising dance-makers."</blockquote><cite>Publication · 2023</cite></div>
+        <div class="quote"><blockquote class="serif">"Screen dance with a cinematographer's eye and a choreographer's patience."</blockquote><cite>Publication · 2023</cite></div>
+        <div class="quote"><blockquote class="serif">"Rigour you can feel from the back row."</blockquote><cite>Publication · 2022</cite></div>
+        <div class="quote"><blockquote class="serif">"Work that has no interest in being safe."</blockquote><cite>Publication · 2023</cite></div>
+        <div class="quote"><blockquote class="serif">"Among the most internationally connected dance companies working in South Africa today."</blockquote><cite>Publication · 2025</cite></div>
+      </div>
+      <div class="qdots" id="qdots"></div>
+    </div>
+  </section>
+
+  <!-- 08 TOURING & CONTACT -->
+  <div class="subscribe-contact" id="contact">
+    <div class="wrap">
+      <div class="sc-grid">
+        <div class="sc-col" id="subscribe">
+          <h3 class="serif">Stay close to the work.</h3>
+          <p class="sub">New productions, touring dates, studio openings, screen dance releases. No noise — only the work.</p>
+          <div class="signup">
+            <input type="email" placeholder="Your email address" aria-label="Email address">
+            <button type="button">Subscribe</button>
+          </div>
+          <label class="consent"><input type="checkbox"> Yes, email me about Darkroom Contemporary's performances, tours and releases. I can unsubscribe at any time.</label>
+        </div>
+        <div class="sc-col">
+          <h3 class="serif">Touring &amp; bookings.</h3>
+          <p class="sub">For technical packs, production budgets, touring availability and presenter enquiries.</p>
+          <div class="contact-detail">
+            <div class="cd-label">Artistic Director</div>
+            <div class="cd-val">Louise Coetzer<br><a href="mailto:louise@darkroomcontemporary.co.za">louise@darkroomcontemporary.co.za</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="cd-label">Producer</div>
+            <div class="cd-val">Robyn Pretorius<br><a href="mailto:robyn@darkroomcontemporary.com">robyn@darkroomcontemporary.com</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="cd-label">Co-founder</div>
+            <div class="cd-val">Oscar O'Ryan<br><a href="mailto:oscar@darkroomcontemporary.co.za">oscar@darkroomcontemporary.co.za</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="fgrid">
+        <div class="fcol">
+          <div class="logo" style="margin-bottom:16px">Darkroom<small>Contemporary</small></div>
+          <p style="max-width:34ch">A studio, a company, and a platform. Under one roof. Home of the Institute of Curiosity.</p>
+          <p style="margin-top:14px">Bree Street, Cape Town</p>
+          <p>Bookings: <a href="mailto:hello@darkroomcontemporary.co.za" style="display:inline;color:var(--bone)">hello@darkroomcontemporary.co.za</a></p>
+        </div>
+        <div class="fcol">
+          <h4>Explore</h4>
+          <a href="/">Home</a>
+          <a href="/company">Darkroom Contemporary</a>
+          <a href="/institute">Institute of Curiosity</a>
+          <a href="/fuel-the-lab">Fuel the Lab</a>
+        </div>
+        <div class="fcol">
+          <h4>Stay close to the work</h4>
+          <div class="signup">
+            <input type="email" placeholder="Your email" aria-label="Email address">
+            <button type="button">Subscribe</button>
+          </div>
+          <div class="fuel" style="margin-top:14px"><a href="/fuel-the-lab">◇ Fuel the Lab</a></div>
+        </div>
+      </div>
+      <div class="fbottom">
+        <span>© 2026 Darkroom Contemporary. A registered NPO.</span>
+        <span class="fsoc"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">YouTube</a></span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  (function(){
+    var qs = Array.from(document.querySelectorAll('#quotes .quote'));
+    var dw = document.getElementById('qdots');
+    var qi = 0;
+    qs.forEach(function(q, idx){
+      var b = document.createElement('button');
+      if(idx === 0) b.className = 'on';
+      b.setAttribute('aria-label', 'Quote ' + (idx + 1));
+      b.onclick = function(){ show(idx); };
+      dw.appendChild(b);
+    });
+    var qd = Array.from(dw.children);
+    function show(n){
+      qi = (n + qs.length) % qs.length;
+      qs.forEach(function(q, idx){ q.classList.toggle('on', idx === qi); });
+      qd.forEach(function(d, idx){ d.classList.toggle('on', idx === qi); });
+    }
+    setInterval(function(){ show(qi + 1); }, 5000);
+  })();
+</script>
+</body>
+</html>

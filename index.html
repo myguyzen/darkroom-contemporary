@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Darkroom Contemporary: Cape Town contemporary performance creation</title>
+<meta name="description" content="Darkroom Contemporary is a Cape Town–based contemporary performance creation company making live work, dance film and screen dance, made to tour. Home of the Institute of Curiosity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161514; --char:#1c1b1a; --char2:#232220; --char3:#2b2926;
+    --bone:#EEEDE9; --bone-2:#d8d6cf; --bone-dim:#a4a199;
+    --maroon:#9a3340; --maroon-deep:#6B2737; --clay:#c98a4b; --sand:#e7ddc9; --sand-ink:#5a4a2f;
+    --line:rgba(238,237,233,.14); --line-2:rgba(238,237,233,.28);
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --maxw:1240px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--sans);
+    font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;letter-spacing:.005em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .serif{font-family:var(--serif)}
+  .kicker{font:500 12px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim)}
+  .accentline{color:var(--maroon)}
+
+  /* ── shared placeholder styling ── */
+  .ph-tag{position:absolute;top:20px;left:28px;z-index:5;font:500 10px/1 var(--sans);
+    letter-spacing:.18em;text-transform:uppercase;color:rgba(238,237,233,.55);
+    background:rgba(0,0,0,.35);border:1px dashed rgba(238,237,233,.25);
+    padding:7px 12px;border-radius:2px}
+  .ph-tile{position:absolute;inset:0;background:linear-gradient(135deg,#2a2826 0%,#1a1817 100%);
+    border:1px dashed rgba(238,237,233,.2);display:flex;align-items:center;justify-content:center;text-align:center}
+  .ph-tile::before{content:"";position:absolute;inset:8px;border:1px dashed rgba(238,237,233,.08);pointer-events:none}
+  .ph-tile::after{content:"◇";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    font:300 56px/1 var(--serif);color:rgba(238,237,233,.12)}
+  .ph-tile .ph-label{position:relative;z-index:1;font:500 10px/1.4 var(--sans);
+    letter-spacing:.16em;text-transform:uppercase;color:rgba(238,237,233,.55);padding:0 20px}
+  .ph-logo{display:flex;align-items:center;justify-content:center;text-align:center;
+    background:rgba(238,237,233,.04);border:1px dashed rgba(238,237,233,.18);
+    font:500 11px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(238,237,233,.45);padding:14px}
+
+  /* utility bar */
+  .ubar{border-bottom:1px solid var(--line);font-size:12px;color:var(--bone-dim)}
+  .ubar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}
+  .ubar .r{display:flex;gap:18px;align-items:center}
+  .ubar a:hover{color:var(--bone)}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(22,21,20,.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font:600 19px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bone)}
+  .logo small{display:block;font:400 9.5px/1 var(--sans);letter-spacing:.42em;color:var(--bone-dim);margin-top:5px}
+  nav.links{display:flex;gap:26px;align-items:center}
+  nav.links a{font:500 13px/1 var(--sans);letter-spacing:.02em;color:var(--bone-2);position:relative;padding:6px 0}
+  nav.links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1.5px;background:var(--maroon);transition:right .28s ease}
+  nav.links a:hover{color:var(--bone)}
+  nav.links a:hover::after{right:0}
+  nav.links a.active{color:var(--bone)}
+  nav.links a.active::after{right:0}
+  .btn{display:inline-flex;align-items:center;gap:8px;font:500 13px/1 var(--sans);letter-spacing:.04em;
+    padding:11px 20px;border-radius:2px;border:1px solid var(--maroon);background:var(--maroon);color:#fff;
+    transition:background .2s,transform .2s}
+  .btn:hover{background:var(--maroon-deep);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--bone);border-color:var(--line-2)}
+  .btn.ghost:hover{border-color:var(--bone);background:transparent}
+  .burger{display:none;background:none;border:0;color:var(--bone);font-size:24px;cursor:pointer}
+
+  /* hero — sliding gallery */
+  .hero{position:relative;height:clamp(520px,82vh,760px);overflow:hidden;background:#0e0d0c}
+  .hero-track{display:flex;height:100%;width:100%;transition:transform .8s cubic-bezier(.65,0,.35,1)}
+  .slide{position:relative;flex:0 0 100%;display:flex;align-items:flex-end;overflow:hidden}
+  .slide-bg{position:absolute;inset:0}
+  .slide-bg-1{background:radial-gradient(130% 120% at 70% 10%,#3a2a2c 0%,#241c1d 45%,#100d0d 100%)}
+  .slide-bg-2{background:radial-gradient(120% 120% at 25% 20%,#3b3a33 0%,#22211c 50%,#100f0d 100%)}
+  .slide-bg-3{background:radial-gradient(130% 120% at 60% 80%,#2a2f38 0%,#1b1e22 50%,#0d0e10 100%)}
+  .slide-bg-4{background:radial-gradient(120% 120% at 80% 20%,#363236 0%,#1f1c20 50%,#0e0d10 100%)}
+  .slide-bg-5{background:radial-gradient(130% 120% at 30% 70%,#293744 0%,#1a2027 50%,#0d1014 100%)}
+  .slide-bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.12) 0%,rgba(0,0,0,.06) 45%,rgba(14,13,12,.86) 100%)}
+  .hero .inner{position:relative;z-index:2;width:100%;padding-bottom:64px}
+  .hero .tag{display:inline-block;font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;
+    color:var(--bone);border:1px solid var(--line-2);border-radius:2px;padding:6px 11px;margin-bottom:20px}
+  .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(40px,6.4vw,84px);line-height:.98;
+    letter-spacing:-.01em;margin:0 0 18px;max-width:15ch}
+  .hero h1 em{font-style:italic;color:var(--bone)}
+  .hero p.lead{font-size:17px;color:var(--bone-2);max-width:60ch;margin:0 0 26px}
+  .hero .cta-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+
+  /* hero arrows */
+  .hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;
+    background:none;border:none;color:var(--bone);
+    font-size:clamp(52px,5.5vw,72px);font-family:var(--serif);font-weight:300;
+    line-height:1;cursor:pointer;padding:0 20px;opacity:.5;
+    transition:opacity .2s,transform .25s}
+  .hero-arrow:hover{opacity:1}
+  .hero-arrow.prev{left:0;transform:translateY(-50%)}
+  .hero-arrow.prev:hover{transform:translateY(-50%) translateX(-3px)}
+  .hero-arrow.next{right:0;transform:translateY(-50%)}
+  .hero-arrow.next:hover{transform:translateY(-50%) translateX(3px)}
+
+  section{padding:88px 0}
+  .eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+  .eyebrow .num{font:500 12px/1 var(--sans);letter-spacing:.1em;color:var(--maroon)}
+  .eyebrow h2{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3.4vw,40px);margin:0;letter-spacing:-.01em}
+  .eyebrow .rule{flex:1;height:1px;background:var(--line)}
+
+  /* titbits */
+  .titbits{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .tit{padding:56px 48px;min-height:300px;display:flex;flex-direction:column;justify-content:center}
+  .tit.dr{background:var(--char)}
+  .tit.ioc{background:var(--sand);color:#2c2620}
+  @media(min-width:1280px){
+    .tit.dr{padding-left:calc((100vw - 1240px) / 2 + 28px)}
+    .tit.ioc{padding-right:calc((100vw - 1240px) / 2 + 28px)}
+  }
+  .tit .brand{font:600 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px}
+  .tit.dr .brand{color:var(--bone)}
+  .tit.ioc .brand{color:var(--sand-ink)}
+  .tit .brand span{display:block;font:400 10px/1 var(--sans);letter-spacing:.28em;margin-top:6px;opacity:.7}
+  .tit h3{font-family:var(--serif);font-weight:300;font-size:clamp(14px,1.55vw,20px);line-height:1.2;margin:0 0 16px;letter-spacing:-.01em;white-space:nowrap}
+  .tit p{font-size:15.5px;margin:0 0 24px;max-width:42ch}
+  .tit.dr p{color:var(--bone-2)}
+  .tit.ioc p{color:#5b5346}
+  .tlink{display:inline-flex;align-items:center;gap:9px;font:500 13px/1 var(--sans);letter-spacing:.04em}
+  .tit.dr .tlink{color:var(--bone)}
+  .tit.ioc .tlink{color:var(--maroon-deep)}
+  .tlink .ar{transition:transform .25s}
+  .tlink:hover .ar{transform:translateX(5px)}
+
+  /* 26/27 season tiles */
+  .workgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .tile{cursor:default}
+  .tile-img{position:relative;aspect-ratio:4/5;overflow:hidden}
+  .tile-img .ph-tile{transition:transform .5s ease}
+  .tile:hover .tile-img .ph-tile{transform:scale(1.04)}
+  .tile-cap{padding:14px 2px 18px;border-bottom:1px solid var(--line)}
+  .tile-cap .t{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.2;color:var(--bone)}
+  .see-work{display:inline-flex;align-items:center;gap:8px;font:500 11px/1 var(--sans);
+    letter-spacing:.12em;text-transform:uppercase;color:var(--bone-dim);margin-top:12px}
+  .see-work:hover{color:var(--bone)}
+  .see-work .ar{transition:transform .25s}
+  .see-work:hover .ar{transform:translateX(4px)}
+
+  /* whats on */
+  .onlist{border-top:1px solid var(--line)}
+  .onrow{display:grid;grid-template-columns:120px 1fr 200px 110px 130px;gap:20px;align-items:center;
+    padding:24px 6px;border-bottom:1px solid var(--line);transition:background .2s}
+  .onrow:hover{background:var(--char)}
+  .onrow .date{font-family:var(--serif);font-size:20px;font-weight:300}
+  .onrow .date small{display:block;font:500 10px/1 var(--sans);letter-spacing:.16em;color:var(--bone-dim);text-transform:uppercase;margin-top:5px}
+  .onrow .ti{font-size:16px;font-weight:500}
+  .onrow .ti small{display:block;font-weight:400;color:var(--bone-dim);font-size:13px;margin-top:3px}
+  .onrow .ven{color:var(--bone-2);font-size:14px}
+  .btag{font:600 10px/1 var(--sans);letter-spacing:.1em;padding:6px 9px;border-radius:2px;text-transform:uppercase;justify-self:start}
+  .btag.dr{background:var(--maroon-deep);color:#fff}
+  .btag.ioc{background:var(--sand);color:var(--sand-ink)}
+  .booklink{justify-self:end;font:500 13px/1 var(--sans);color:var(--bone);display:inline-flex;gap:7px;align-items:center}
+  .booklink:hover{color:var(--maroon)}
+
+  /* press */
+  .press{background:var(--char);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .quotebox{max-width:900px;margin:0 auto;text-align:center;min-height:170px;position:relative}
+  .quote{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;display:flex;flex-direction:column;justify-content:center}
+  .quote.on{opacity:1;position:relative}
+  .quote blockquote{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(22px,3vw,32px);
+    line-height:1.3;margin:0 0 22px;letter-spacing:-.01em}
+  .quote cite{font:500 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--maroon);font-style:normal}
+  .qdots{display:flex;gap:9px;justify-content:center;margin-top:34px}
+  .qdots button{width:8px;height:8px;border-radius:50%;border:0;background:var(--line-2);cursor:pointer}
+  .qdots button.on{background:var(--maroon)}
+
+  /* archive callout */
+  .archive-callout{display:flex;align-items:center;justify-content:space-between;gap:32px;
+    padding:48px;border:1px solid var(--line);background:var(--char);border-radius:2px;flex-wrap:wrap}
+  .archive-callout .ac-copy{max-width:48ch}
+  .archive-callout h3{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.4vw,30px);
+    line-height:1.2;margin:0 0 12px;letter-spacing:-.01em}
+  .archive-callout p{color:var(--bone-2);margin:0;font-size:15px}
+
+  /* funders */
+  .funders{text-align:center}
+  .funders .lab{font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:36px}
+  .flogos{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .flogo{height:74px}
+
+  /* footer */
+  footer.site{background:var(--char2);border-top:1px solid var(--line);padding:72px 0 36px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:48px;padding-bottom:48px;border-bottom:1px solid var(--line)}
+  .fcol h4{font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--bone-dim);margin:0 0 18px}
+  .fcol p,.fcol a{font-size:14px;color:var(--bone-2);margin:0 0 10px}
+  .fcol a{display:block}
+  .fcol a:hover{color:var(--bone)}
+  .signup{display:flex;border:1px solid var(--line-2);border-radius:2px;overflow:hidden;margin:6px 0 12px;max-width:340px}
+  .signup input{flex:1;background:transparent;border:0;color:var(--bone);padding:13px 14px;font:400 14px var(--sans);outline:none}
+  .signup input::placeholder{color:#6f6c66}
+  .signup button{background:var(--maroon);color:#fff;border:0;padding:0 18px;font:500 13px var(--sans);cursor:pointer}
+  .consent{font-size:11.5px;color:#7f7c75;max-width:340px;line-height:1.5}
+  .consent input{vertical-align:-1px;margin-right:7px;accent-color:var(--maroon)}
+  .fuel{margin-top:8px}
+  .fuel a{display:inline-flex;align-items:center;gap:8px;color:var(--clay);font:500 13px var(--sans);letter-spacing:.03em}
+  .fbottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding-top:26px;
+    font-size:12px;color:var(--bone-dim)}
+  .fsoc{display:flex;gap:18px}
+  .fsoc a:hover{color:var(--bone)}
+
+  /* mobile */
+  .mmenu{display:none}
+  @media(max-width:1000px){
+    nav.links{display:none}
+    .burger{display:block}
+    .titbits{grid-template-columns:1fr}
+    .tit h3{white-space:normal;font-size:clamp(18px,3vw,22px)}
+    .workgrid{grid-template-columns:repeat(2,1fr)}
+    .onrow{grid-template-columns:84px 1fr;gap:10px 14px}
+    .onrow .ven,.onrow .btag{grid-column:2}
+    .onrow .booklink{grid-column:2;justify-self:start}
+    .fgrid{grid-template-columns:1fr;gap:34px}
+    .flogos{grid-template-columns:repeat(3,1fr)}
+    .mmenu.show{display:block;border-top:1px solid var(--line);background:var(--char)}
+    .mmenu a{display:block;padding:15px 28px;border-bottom:1px solid var(--line);color:var(--bone-2);font:500 14px var(--sans)}
+    .hero-arrow{font-size:40px;padding:0 12px;opacity:.4}
+    .archive-callout{padding:32px;flex-direction:column;align-items:flex-start}
+  }
+  @media(max-width:560px){
+    .workgrid{grid-template-columns:1fr}
+    .tit{padding:44px 28px}
+    .flogos{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+
+  <div class="ubar">
+    <div class="wrap">
+      <span>Cape Town · contemporary performance creation, made to tour</span>
+      <span class="r">
+        <a href="#">EN</a>
+        <a href="#newsletter">Subscribe</a>
+        <a href="#">Instagram</a>
+      </span>
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="logo" href="/">Darkroom<small>Contemporary</small></a>
+      <nav class="links">
+        <a href="/" class="active">Home</a>
+        <a href="/company">Darkroom Contemporary</a>
+        <a href="/institute">Institute of Curiosity</a>
+        <a href="/fuel-the-lab">Fuel the Lab</a>
+      </nav>
+      <a class="btn" href="#whatson">Book</a>
+      <button class="burger" aria-label="Open menu" onclick="document.getElementById('mm').classList.toggle('show')">☰</button>
+    </div>
+    <div class="mmenu" id="mm">
+      <a href="/">Home</a>
+      <a href="/company">Darkroom Contemporary</a>
+      <a href="/institute">Institute of Curiosity</a>
+      <a href="/fuel-the-lab">Fuel the Lab</a>
+    </div>
+  </header>
+
+  <!-- HERO — sliding gallery -->
+  <div class="hero" id="hero">
+    <div class="hero-track" id="heroTrack">
+
+      <div class="slide">
+        <div class="slide-bg slide-bg-1"></div>
+        <span class="ph-tag">Image placeholder · Darkroom</span>
+        <div class="wrap inner">
+          <span class="tag">Darkroom Contemporary</span>
+          <h1 class="serif">Made <em>to</em> tour.</h1>
+          <p class="lead">Cape Town–based contemporary performance creation. Live work, dance film and screen dance, fifteen years in the making.</p>
+          <div class="cta-row"><a class="btn" href="/company">See the work</a><a class="btn ghost" href="#whatson">What's on</a></div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-bg slide-bg-2"></div>
+        <span class="ph-tag">Image placeholder · Institute of Curiosity</span>
+        <div class="wrap inner">
+          <span class="tag">Institute of Curiosity</span>
+          <h1 class="serif">The studio is <em>open</em>.</h1>
+          <p class="lead">A new home on Bree Street, and with it, the Institute of Curiosity: a place to practise, watch, and make.</p>
+          <div class="cta-row"><a class="btn" href="/institute">Inside the Institute</a></div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-bg slide-bg-3"></div>
+        <span class="ph-tag">Image placeholder · autoplay</span>
+        <div class="wrap inner">
+          <span class="tag">Production · 26/27 Season</span>
+          <h1 class="serif">autoplay</h1>
+          <p class="lead">[Show description coming soon.]</p>
+          <div class="cta-row">
+            <a class="btn" href="#">Read more</a>
+            <a class="btn ghost" href="#whatson">Dates</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-bg slide-bg-4"></div>
+        <span class="ph-tag">Image placeholder · e.ID</span>
+        <div class="wrap inner">
+          <span class="tag">Production · 26/27 Season</span>
+          <h1 class="serif">e.<em>ID</em></h1>
+          <p class="lead">[Show description coming soon.]</p>
+          <div class="cta-row">
+            <a class="btn" href="#">Read more</a>
+            <a class="btn ghost" href="#whatson">Dates</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-bg slide-bg-5"></div>
+        <span class="ph-tag">Image placeholder · Blue Funk</span>
+        <div class="wrap inner">
+          <span class="tag">Production · 26/27 Season</span>
+          <h1 class="serif">Blue <em>Funk</em></h1>
+          <p class="lead">[Show description coming soon.]</p>
+          <div class="cta-row">
+            <a class="btn" href="#">Read more</a>
+            <a class="btn ghost" href="#whatson">Dates</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button class="hero-arrow prev" aria-label="Previous slide" onclick="heroSlider.go(-1)">&#8249;</button>
+    <button class="hero-arrow next" aria-label="Next slide" onclick="heroSlider.go(1)">&#8250;</button>
+  </div>
+
+  <!-- TITBITS -->
+  <div class="titbits">
+    <div class="tit dr">
+      <div class="brand">Darkroom Contemporary<span>The performance creation company</span></div>
+      <p>A Cape Town company making contemporary live work, dance film and screen dance with a refined, considered eye. Created to tour internationally.</p>
+      <a class="tlink" href="/company">More about the company <span class="ar">→</span></a>
+    </div>
+    <div class="tit ioc">
+      <div class="brand">Institute of Curiosity<span>Powered by Darkroom Contemporary</span></div>
+      <p>Darkroom's platform for movement practice, emerging artists, public discourse and screen dance: labs, classes, residencies and conversations.</p>
+      <a class="tlink" href="/institute">Inside the Institute <span class="ar">→</span></a>
+    </div>
+  </div>
+
+  <!-- 26/27 SEASON -->
+  <section id="work">
+    <div class="wrap">
+      <div class="eyebrow"><span class="num">01</span><h2 class="serif">26/27 Season — at a glance</h2><span class="rule"></span><span class="kicker">Upcoming</span></div>
+      <div class="workgrid">
+        <div class="tile">
+          <div class="tile-img"><div class="ph-tile"><span class="ph-label">Image · autoplay</span></div></div>
+          <div class="tile-cap">
+            <div class="t serif">autoplay</div>
+            <a class="see-work" href="#">See the work <span class="ar">→</span></a>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="tile-img"><div class="ph-tile"><span class="ph-label">Image · e.ID</span></div></div>
+          <div class="tile-cap">
+            <div class="t serif">e.ID</div>
+            <a class="see-work" href="#">See the work <span class="ar">→</span></a>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="tile-img"><div class="ph-tile"><span class="ph-label">Image · Blue Funk</span></div></div>
+          <div class="tile-cap">
+            <div class="t serif">Blue Funk</div>
+            <a class="see-work" href="#">See the work <span class="ar">→</span></a>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="tile-img"><div class="ph-tile"><span class="ph-label">Image · Lacuna</span></div></div>
+          <div class="tile-cap">
+            <div class="t serif">Lacuna</div>
+            <a class="see-work" href="#">See the work <span class="ar">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S ON -->
+  <section id="whatson" style="padding-top:0">
+    <div class="wrap">
+      <div class="eyebrow"><span class="num">02</span><h2 class="serif">What's on</h2><span class="rule"></span><a class="kicker" href="#" style="color:var(--bone-dim)">Full calendar →</a></div>
+      <div class="onlist">
+        <div class="onrow">
+          <div class="date">30 May<small>2026 · Fri</small></div>
+          <div class="ti">[Production title]<small>Live performance</small></div>
+          <div class="ven">A4 Arts Foundation, Cape Town</div>
+          <span class="btag dr">Darkroom</span>
+          <a class="booklink" href="#">Book <span>→</span></a>
+        </div>
+        <div class="onrow">
+          <div class="date">07 Jun<small>2026 · Sun</small></div>
+          <div class="ti">Studio Practice: morning class<small>Movement class for adults</small></div>
+          <div class="ven">Bree Street studio</div>
+          <span class="btag ioc">Institute</span>
+          <a class="booklink" href="#">Book <span>→</span></a>
+        </div>
+        <div class="onrow">
+          <div class="date">14 Jun<small>2026 · Sat</small></div>
+          <div class="ti">Deep space discourse<small>Public conversation</small></div>
+          <div class="ven">Bree Street studio</div>
+          <span class="btag ioc">Institute</span>
+          <a class="booklink" href="#">Book <span>→</span></a>
+        </div>
+        <div class="onrow">
+          <div class="date">Sep</div>
+          <div class="ti">Berlin tour: screen dance<small>Presented with Pool, Berlin</small></div>
+          <div class="ven">Berlin, DE</div>
+          <span class="btag dr">Darkroom</span>
+          <a class="booklink" href="#">Details <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS -->
+  <section class="press" id="press">
+    <div class="wrap">
+      <div class="eyebrow" style="justify-content:center"><span class="kicker">In the press</span></div>
+      <div class="quotebox" id="quotes">
+        <div class="quote on"><blockquote class="serif">"A company that makes the body think."</blockquote><cite>Publication · 2024</cite></div>
+        <div class="quote"><blockquote class="serif">"Cape Town's most quietly uncompromising dance-makers."</blockquote><cite>Publication · 2023</cite></div>
+        <div class="quote"><blockquote class="serif">"Screen dance with a cinematographer's eye and a choreographer's patience."</blockquote><cite>Publication · 2023</cite></div>
+        <div class="quote"><blockquote class="serif">"Rigour you can feel from the back row."</blockquote><cite>Publication · 2022</cite></div>
+      </div>
+      <div class="qdots" id="qdots"></div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section id="archive">
+    <div class="wrap">
+      <div class="eyebrow"><span class="num">03</span><h2 class="serif">Selected work</h2><span class="rule"></span><span class="kicker">2010–2026</span></div>
+      <div class="archive-callout">
+        <div class="ac-copy">
+          <h3 class="serif">The living archive</h3>
+          <p>Fifteen years of live performance, dance film and screen dance — productions, tours and screenings, fully indexed.</p>
+        </div>
+        <a class="btn ghost" href="#">Browse the archive <span class="ar">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORTED BY -->
+  <section class="funders" id="funders" style="padding-top:0">
+    <div class="wrap">
+      <div class="lab">Supported by</div>
+      <div class="flogos">
+        <div class="flogo ph-logo">Logo placeholder<br>Funder 01</div>
+        <div class="flogo ph-logo">Logo placeholder<br>Funder 02</div>
+        <div class="flogo ph-logo">Logo placeholder<br>Partner 01</div>
+        <div class="flogo ph-logo">Logo placeholder<br>Grant 01</div>
+        <div class="flogo ph-logo">Logo placeholder<br>Partner 02</div>
+        <div class="flogo ph-logo">Logo placeholder<br>In-kind</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site" id="contact">
+    <div class="wrap">
+      <div class="fgrid">
+        <div class="fcol">
+          <div class="logo" style="margin-bottom:16px">Darkroom<small>Contemporary</small></div>
+          <p style="max-width:34ch">A studio, a company, and a platform. Under one roof. Home of the Institute of Curiosity.</p>
+          <p style="margin-top:14px">Bree Street, Cape Town</p>
+          <p>Producer / bookings: <a href="mailto:hello@darkroomcontemporary.co.za" style="display:inline;color:var(--bone)">hello@darkroomcontemporary.co.za</a></p>
+        </div>
+        <div class="fcol">
+          <h4>Explore</h4>
+          <a href="/company">Darkroom Contemporary</a>
+          <a href="/institute">Institute of Curiosity</a>
+          <a href="/fuel-the-lab">Fuel the Lab</a>
+        </div>
+        <div class="fcol" id="newsletter">
+          <h4>Stay close to the work</h4>
+          <div class="signup">
+            <input type="email" placeholder="Your email" aria-label="Email address">
+            <button type="button">Subscribe</button>
+          </div>
+          <label class="consent"><input type="checkbox"> Yes, email me about performances, classes and tours. I can unsubscribe at any time.</label>
+          <div class="fuel"><a href="/fuel-the-lab">◇ Fuel the Lab</a></div>
+        </div>
+      </div>
+      <div class="fbottom">
+        <span>© 2026 Darkroom Contemporary. A registered NPO.</span>
+        <span class="fsoc"><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">Vimeo</a></span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // Hero sliding gallery
+  var heroSlider = (function(){
+    var track = document.getElementById('heroTrack');
+    var slides = document.querySelectorAll('.hero .slide');
+    var i = 0, timer;
+    function show(n){
+      i = (n + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (i * 100) + '%)';
+    }
+    function reset(){
+      clearInterval(timer);
+      timer = setInterval(function(){ show(i + 1); }, 6000);
+    }
+    reset();
+    return { go: function(d){ show(i + d); reset(); } };
+  })();
+
+  // Press quote rotator
+  (function(){
+    var qs = Array.from(document.querySelectorAll('#quotes .quote'));
+    var dw = document.getElementById('qdots');
+    var qi = 0;
+    qs.forEach(function(q, idx){
+      var b = document.createElement('button');
+      if(idx === 0) b.className = 'on';
+      b.setAttribute('aria-label', 'Quote ' + (idx + 1));
+      b.onclick = function(){ show(idx); };
+      dw.appendChild(b);
+    });
+    var qd = Array.from(dw.children);
+    function show(n){
+      qi = (n + qs.length) % qs.length;
+      qs.forEach(function(q, idx){ q.classList.toggle('on', idx === qi); });
+      qd.forEach(function(d, idx){ d.classList.toggle('on', idx === qi); });
+    }
+    setInterval(function(){ show(qi + 1); }, 5000);
+  })();
+</script>
+</body>
+</html>

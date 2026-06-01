@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fuel the Lab — Darkroom Contemporary</title>
+<meta name="description" content="The Institute of Curiosity runs on public funding — and on contributions from people who believe the work matters. Receipts issued by Darkroom Contemporary NPO (089-552 NPO).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161514; --char:#1c1b1a; --char2:#232220; --char3:#2b2926;
+    --bone:#EEEDE9; --bone-2:#d8d6cf; --bone-dim:#a4a199;
+    --maroon:#9a3340; --maroon-deep:#6B2737; --clay:#c98a4b;
+    --sand:#e7ddc9; --sand-2:#d4c9af; --sand-ink:#5a4a2f; --sand-dim:#8a7b60;
+    --line:rgba(238,237,233,.14); --line-2:rgba(238,237,233,.28);
+    --sand-line:rgba(90,74,47,.16); --sand-line-2:rgba(90,74,47,.28);
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --maxw:1240px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--sans);
+    font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;letter-spacing:.005em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .serif{font-family:var(--serif)}
+  .kicker{font:500 12px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim)}
+
+  /* utility bar */
+  .ubar{border-bottom:1px solid var(--line);font-size:12px;color:var(--bone-dim)}
+  .ubar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}
+  .ubar .r{display:flex;gap:18px;align-items:center}
+  .ubar a:hover{color:var(--bone)}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(22,21,20,.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font:600 19px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bone)}
+  .logo small{display:block;font:400 9.5px/1 var(--sans);letter-spacing:.42em;color:var(--bone-dim);margin-top:5px}
+  nav.links{display:flex;gap:26px;align-items:center}
+  nav.links a{font:500 13px/1 var(--sans);letter-spacing:.02em;color:var(--bone-2);position:relative;padding:6px 0}
+  nav.links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1.5px;background:var(--maroon);transition:right .28s ease}
+  nav.links a:hover{color:var(--bone)}
+  nav.links a:hover::after{right:0}
+  nav.links a.active{color:var(--bone)}
+  nav.links a.active::after{right:0}
+  .btn{display:inline-flex;align-items:center;gap:8px;font:500 13px/1 var(--sans);letter-spacing:.04em;
+    padding:11px 20px;border-radius:2px;border:1px solid var(--maroon);background:var(--maroon);color:#fff;
+    transition:background .2s,transform .2s}
+  .btn:hover{background:var(--maroon-deep);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--bone);border-color:var(--line-2)}
+  .btn.ghost:hover{border-color:var(--bone);background:transparent}
+  .btn.sand{background:var(--sand-ink);border-color:var(--sand-ink);color:var(--sand)}
+  .btn.sand:hover{background:#3e3220;transform:translateY(-1px)}
+  .btn.sand-ghost{background:transparent;border-color:var(--sand-line-2);color:var(--sand-ink)}
+  .btn.sand-ghost:hover{border-color:var(--sand-ink);background:transparent}
+  .burger{display:none;background:none;border:0;color:var(--bone);font-size:24px;cursor:pointer}
+
+  /* breadcrumb */
+  .breadcrumb{border-bottom:1px solid var(--line);font-size:12px;color:var(--bone-dim)}
+  .breadcrumb .wrap{display:flex;align-items:center;gap:10px;height:38px}
+  .breadcrumb a:hover{color:var(--bone)}
+  .breadcrumb .sep{opacity:.4}
+  .breadcrumb .cur{color:var(--bone)}
+
+  /* hero */
+  .fuel-hero{position:relative;padding:96px 0 80px;overflow:hidden;
+    background:radial-gradient(130% 120% at 38% 12%,#4e3a22 0%,#2e2012 50%,#120c06 100%)}
+  .fuel-hero::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(18,12,6,.88) 100%);pointer-events:none}
+  .fuel-hero .ghost{position:absolute;right:-2%;top:50%;transform:translateY(-50%);
+    font:300 clamp(80px,14vw,180px)/1 var(--serif);color:rgba(231,221,201,.04);
+    letter-spacing:.2em;text-transform:uppercase;pointer-events:none;white-space:nowrap;z-index:0}
+  .fuel-hero .inner{position:relative;z-index:2;max-width:680px}
+  .fuel-hero .lockup{font:400 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;
+    color:var(--clay);margin-bottom:14px}
+  .fuel-hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(40px,5.8vw,76px);
+    line-height:1.02;letter-spacing:-.015em;margin:0 0 24px}
+  .fuel-hero h1 em{font-style:italic}
+  .fuel-hero .sub{font-size:16px;color:var(--bone-2);max-width:50ch;line-height:1.72;margin:0 0 32px}
+  .fuel-hero .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .fuel-hero .npo-pill{font:400 11px/1 var(--sans);letter-spacing:.1em;color:var(--bone-dim);
+    border:1px solid var(--line-2);border-radius:2px;padding:8px 12px}
+
+  /* donation block */
+  .give{background:var(--sand);color:#2c2620;padding:88px 0;
+    border-top:1px solid var(--sand-line)}
+  .give-inner{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:start}
+  .give-copy .eyebrow-sand{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+  .give-copy .eyebrow-sand span{font:500 12px/1 var(--sans);letter-spacing:.22em;
+    text-transform:uppercase;color:var(--sand-dim)}
+  .give-copy .eyebrow-sand .rule{flex:1;height:1px;background:var(--sand-line)}
+  .give-copy h2{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.2vw,44px);
+    line-height:1.05;letter-spacing:-.01em;color:var(--sand-ink);margin:0 0 22px}
+  .give-copy h2 em{font-style:italic}
+  .give-copy p{font-size:16px;color:var(--sand-ink);line-height:1.8;max-width:50ch;margin:0 0 16px}
+  .give-copy .npo-note{font-size:12px;color:var(--sand-dim);margin-top:4px;line-height:1.6;
+    border-left:2px solid var(--sand-2);padding-left:12px}
+  .breakdowns{margin-top:36px;padding-top:28px;border-top:1px solid var(--sand-line)}
+  .bd-label{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;
+    color:var(--sand-dim);margin-bottom:18px}
+  .bd-row{display:flex;gap:16px;align-items:flex-start;padding:14px 0;
+    border-bottom:1px solid var(--sand-line)}
+  .bd-row:last-child{border-bottom:none}
+  .bd-icon{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--clay);
+    width:32px;flex-shrink:0;line-height:1.1;margin-top:1px}
+  .bd-text .bd-title{font:500 14px/1.2 var(--sans);color:var(--sand-ink);margin-bottom:3px}
+  .bd-text .bd-desc{font-size:13px;color:var(--sand-dim);line-height:1.55}
+
+  /* form */
+  .f-label{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;
+    color:var(--sand-dim);margin-bottom:16px}
+  .amount-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}
+  .amt-btn{border:1px solid var(--sand-line-2);background:transparent;color:var(--sand-ink);
+    padding:18px 8px;font-family:var(--serif);font-size:20px;font-weight:300;cursor:pointer;
+    border-radius:2px;transition:border-color .2s,background .2s;text-align:center;line-height:1}
+  .amt-btn .hint{display:block;font:400 11px/1 var(--sans);color:var(--sand-dim);margin-top:5px;letter-spacing:.04em}
+  .amt-btn:hover,.amt-btn.on{border-color:var(--sand-ink);background:rgba(90,74,47,.08)}
+  .custom-row{display:flex;border:1px solid var(--sand-line-2);border-radius:2px;overflow:hidden;margin-top:8px;margin-bottom:22px}
+  .custom-row span{padding:0 14px;background:rgba(90,74,47,.06);border-right:1px solid var(--sand-line-2);
+    display:flex;align-items:center;font:500 14px var(--sans);color:var(--sand-dim)}
+  .custom-row input{flex:1;border:0;background:transparent;padding:14px;
+    font:400 15px var(--sans);color:var(--sand-ink);outline:none}
+  .custom-row input::placeholder{color:var(--sand-dim)}
+  .name-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+  .field label{font:600 10px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--sand-dim)}
+  .field input,.field select{border:1px solid var(--sand-line-2);border-radius:2px;background:transparent;
+    padding:13px 14px;font:400 14px var(--sans);color:var(--sand-ink);outline:none;
+    transition:border-color .2s}
+  .field input:focus,.field select:focus{border-color:var(--sand-ink)}
+  .field input::placeholder{color:var(--sand-dim)}
+  .consent-sand{font-size:11.5px;color:var(--sand-dim);max-width:100%;line-height:1.6;
+    margin:14px 0 20px;display:flex;gap:9px;align-items:flex-start}
+  .consent-sand input{margin-top:2px;flex-shrink:0;accent-color:var(--maroon-deep);cursor:pointer}
+  .give-note{font-size:11.5px;color:var(--sand-dim);margin-top:12px;line-height:1.55}
+
+  /* what your contribution funds */
+  .what-funds{background:var(--char2);border-top:1px solid var(--line);padding:88px 0}
+  .funds-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin-top:52px}
+  .fund-card{background:var(--char);padding:36px 28px;display:flex;flex-direction:column}
+  .fund-num{font:500 11px/1 var(--sans);letter-spacing:.18em;color:var(--maroon);
+    text-transform:uppercase;margin-bottom:18px}
+  .fund-rule{width:28px;height:1.5px;background:var(--clay);margin-bottom:16px}
+  .fund-name{font-family:var(--serif);font-weight:300;font-size:clamp(18px,1.9vw,24px);
+    line-height:1.15;letter-spacing:-.01em;margin:0 0 14px;flex:1}
+  .fund-desc{font-size:14px;color:var(--bone-2);line-height:1.65;margin:0}
+
+  /* funders */
+  .funders{background:var(--sand);color:#2c2620;padding:88px 0;
+    border-top:1px solid var(--sand-line)}
+  .funders-intro{max-width:52ch;margin-bottom:60px}
+  .funders-intro p{font-size:16px;color:var(--sand-ink);line-height:1.75;margin:0}
+  .funder-cat{margin-bottom:52px}
+  .funder-cat:last-child{margin-bottom:0}
+  .fcat-label{font:600 10px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;
+    color:var(--sand-dim);padding-bottom:14px;border-bottom:1px solid var(--sand-line);
+    margin-bottom:24px}
+  .funder-logos{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .flogo{border:1px solid var(--sand-line);background:rgba(90,74,47,.04);
+    aspect-ratio:3/1;display:flex;align-items:center;justify-content:center;
+    font:500 10px/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;
+    color:var(--sand-dim);text-align:center;padding:14px;border-radius:2px;
+    transition:border-color .2s,background .2s}
+  .flogo:hover{border-color:var(--sand-ink);background:rgba(90,74,47,.08)}
+  .flogo .fl-name{color:var(--sand-ink);display:block;margin-bottom:4px;
+    font:500 12px/1.2 var(--sans);letter-spacing:.02em}
+  .flogo .fl-type{font:400 10px/1 var(--sans);letter-spacing:.12em;color:var(--sand-dim);text-transform:uppercase}
+  .funder-note{font-size:12px;color:var(--sand-dim);line-height:1.65;margin-top:14px;
+    max-width:62ch;font-style:italic}
+
+  /* eyebrow */
+  .eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:48px}
+  .eyebrow .num{font:500 12px/1 var(--sans);letter-spacing:.1em;color:var(--maroon)}
+  .eyebrow h2{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3.4vw,40px);margin:0;letter-spacing:-.01em}
+  .eyebrow .rule{flex:1;height:1px;background:var(--line)}
+  .eyebrow.sand .num{color:var(--maroon-deep)}
+  .eyebrow.sand h2{color:#2c2620}
+  .eyebrow.sand .rule{background:var(--sand-line)}
+
+  /* footer */
+  footer.site{background:var(--char2);border-top:1px solid var(--line);padding:56px 0 36px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:48px;
+    padding-bottom:48px;border-bottom:1px solid var(--line)}
+  .fcol h4{font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;
+    color:var(--bone-dim);margin:0 0 18px}
+  .fcol p,.fcol a{font-size:14px;color:var(--bone-2);margin:0 0 10px}
+  .fcol a{display:block}
+  .fcol a:hover{color:var(--bone)}
+  .signup{display:flex;border:1px solid var(--line-2);border-radius:2px;overflow:hidden;
+    margin:0 0 12px;max-width:340px}
+  .signup input{flex:1;background:transparent;border:0;color:var(--bone);
+    padding:13px 14px;font:400 14px var(--sans);outline:none}
+  .signup input::placeholder{color:#6f6c66}
+  .signup button{background:var(--maroon);color:#fff;border:0;padding:0 18px;
+    font:500 13px var(--sans);cursor:pointer}
+  .signup button:hover{background:var(--maroon-deep)}
+  .fbottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;
+    gap:14px;padding-top:26px;font-size:12px;color:var(--bone-dim)}
+  .fsoc{display:flex;gap:18px}
+  .fsoc a:hover{color:var(--bone)}
+
+  /* mobile */
+  .mmenu{display:none}
+  @media(max-width:1100px){
+    .funder-logos{grid-template-columns:repeat(4,1fr)}
+    .funds-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:1000px){
+    nav.links{display:none}
+    .burger{display:block}
+    .mmenu.show{display:block;border-top:1px solid var(--line);background:var(--char)}
+    .mmenu a{display:block;padding:15px 28px;border-bottom:1px solid var(--line);
+      color:var(--bone-2);font:500 14px var(--sans)}
+    .give-inner{grid-template-columns:1fr;gap:48px}
+    .name-row{grid-template-columns:1fr}
+    .funder-logos{grid-template-columns:repeat(3,1fr)}
+    .fgrid{grid-template-columns:1fr;gap:34px}
+  }
+  @media(max-width:640px){
+    .funds-grid{grid-template-columns:1fr}
+    .funder-logos{grid-template-columns:repeat(2,1fr)}
+    .amount-grid{grid-template-columns:1fr}
+    .fuel-hero{padding:72px 0 64px}
+  }
+</style>
+</head>
+<body>
+
+  <div class="ubar">
+    <div class="wrap">
+      <span>Cape Town · contemporary performance creation, made to tour</span>
+      <span class="r">
+        <a href="#">EN</a>
+        <a href="#subscribe">Subscribe</a>
+        <a href="#">Instagram</a>
+      </span>
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="logo" href="/">Darkroom<small>Contemporary</small></a>
+      <nav class="links">
+        <a href="/">Home</a>
+        <a href="/company">Darkroom Contemporary</a>
+        <a href="/institute">Institute of Curiosity</a>
+        <a href="/fuel-the-lab" class="active">Fuel the Lab</a>
+      </nav>
+      <a class="btn" href="#">Book</a>
+      <button class="burger" aria-label="Open menu" onclick="document.getElementById('mm').classList.toggle('show')">☰</button>
+    </div>
+    <div class="mmenu" id="mm">
+      <a href="/">Home</a>
+      <a href="/company">Darkroom Contemporary</a>
+      <a href="/institute">Institute of Curiosity</a>
+      <a href="/fuel-the-lab">Fuel the Lab</a>
+    </div>
+  </header>
+
+  <div class="breadcrumb">
+    <div class="wrap">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <span class="cur">Fuel the Lab</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="fuel-hero">
+    <div class="ghost">LAB</div>
+    <div class="wrap">
+      <div class="inner">
+        <div class="lockup">Institute of Curiosity · Powered by Darkroom Contemporary</div>
+        <h1 class="serif">Fuel <em>the Lab</em>.</h1>
+        <p class="sub">The Institute of Curiosity runs on public funding — and on contributions from people who believe the work matters. What you put in here goes directly into the room where the work happens.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#give">◇ Contribute now</a>
+          <a class="btn ghost" href="#funders">Funders &amp; Supporters</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATION BLOCK -->
+  <div class="give" id="give">
+    <div class="wrap">
+      <div class="give-inner">
+
+        <div class="give-copy">
+          <div class="eyebrow-sand">
+            <span>Pour into something living</span>
+            <span class="rule"></span>
+          </div>
+          <h2 class="serif">Not a donation.<br><em>Fuel for a process.</em></h2>
+          <p>The Institute of Curiosity is where Darkroom develops new work, builds its ensemble, and makes space for emerging artists. Public funding takes us part of the way. The rest comes from people who believe the work matters.</p>
+          <p>Every contribution goes directly into the lab: studio time, artist fees, development programmes, community access. A contribution here is not a transaction with an organisation. It is fuel poured into a specific, living process.</p>
+          <p class="npo-note">Receipts issued by Darkroom Contemporary NPO (089-552 NPO · PBO 930 043 891). A receipt will arrive by email within five working days.</p>
+
+          <div class="breakdowns">
+            <div class="bd-label">Where it goes</div>
+            <div class="bd-row">
+              <div class="bd-icon">◻</div>
+              <div class="bd-text">
+                <div class="bd-title">Studio time</div>
+                <div class="bd-desc">Rehearsal hours, floor space, lighting and sound for the development of new work at the Bree Street studio.</div>
+              </div>
+            </div>
+            <div class="bd-row">
+              <div class="bd-icon">◻</div>
+              <div class="bd-text">
+                <div class="bd-title">Artist fees</div>
+                <div class="bd-desc">Paying the ensemble and invited artists properly — in development, not just in performance.</div>
+              </div>
+            </div>
+            <div class="bd-row">
+              <div class="bd-icon">◻</div>
+              <div class="bd-text">
+                <div class="bd-title">Development programmes</div>
+                <div class="bd-desc">Screen Dance Lab, Unfinished showings, mentoring and residency time for emerging artists.</div>
+              </div>
+            </div>
+            <div class="bd-row">
+              <div class="bd-icon">◻</div>
+              <div class="bd-text">
+                <div class="bd-title">Community access</div>
+                <div class="bd-desc">Free Studio Sessions, discounted class rates, and public events that keep the work open to the city.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="give-form" id="give-form">
+          <div class="f-label">Choose an amount</div>
+          <div class="amount-grid">
+            <button class="amt-btn" type="button" onclick="selectAmt(this)">
+              R250<span class="hint">A class series</span>
+            </button>
+            <button class="amt-btn on" type="button" onclick="selectAmt(this)">
+              R500<span class="hint">Studio half-day</span>
+            </button>
+            <button class="amt-btn" type="button" onclick="selectAmt(this)">
+              R1,000<span class="hint">Artist day rate</span>
+            </button>
+          </div>
+          <div class="custom-row">
+            <span>R</span>
+            <input type="number" placeholder="Other amount" min="50" id="customAmt">
+          </div>
+
+          <div class="name-row">
+            <div class="field">
+              <label>First name</label>
+              <input type="text" placeholder="First name">
+            </div>
+            <div class="field">
+              <label>Last name</label>
+              <input type="text" placeholder="Last name">
+            </div>
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+
+          <label class="consent-sand">
+            <input type="checkbox">
+            <span>Yes, I want to fuel the Institute of Curiosity. I understand my contribution supports Darkroom Contemporary's development programmes.</span>
+          </label>
+
+          <a class="btn sand" href="#" style="width:100%;justify-content:center;padding:16px 20px;font-size:14px">◇ Fuel the Lab</a>
+          <p class="give-note">Secure payment via PayFast · Apple Pay and card accepted · five fields to checkout.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT YOUR CONTRIBUTION FUNDS -->
+  <section class="what-funds">
+    <div class="wrap">
+      <div class="eyebrow">
+        <span class="num">01</span>
+        <h2 class="serif">What the lab runs on</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="funds-grid">
+        <div class="fund-card">
+          <div class="fund-num">Studio time</div>
+          <div class="fund-rule"></div>
+          <div class="fund-name serif">Floor space and hours for making new work</div>
+          <div class="fund-desc">The Bree Street studio is where Darkroom makes work. Keeping it available for long-form development — not just classes and events — takes resources beyond what ticket sales cover.</div>
+        </div>
+        <div class="fund-card">
+          <div class="fund-num">Artist fees</div>
+          <div class="fund-rule"></div>
+          <div class="fund-name serif">Paying the ensemble in development, not just in performance</div>
+          <div class="fund-desc">Darkroom's ensemble works across the full arc of a project. Fees paid in development — not only at performance — are the difference between making the work properly and making it under pressure.</div>
+        </div>
+        <div class="fund-card">
+          <div class="fund-num">Emerging artists</div>
+          <div class="fund-rule"></div>
+          <div class="fund-name serif">Screen Dance Lab, Unfinished showings, mentorship</div>
+          <div class="fund-desc">The Institute's programmes — Screen Dance Lab, Unfinished, residency time — exist for artists who are ready for serious development but not yet ready for the main stage. These cost more than they earn.</div>
+        </div>
+        <div class="fund-card">
+          <div class="fund-num">Community access</div>
+          <div class="fund-rule"></div>
+          <div class="fund-name serif">Keeping the studio open to the city</div>
+          <div class="fund-desc">Free Studio Sessions and subsidised class rates mean the work is not just for people who can afford a full ticket. Community access is a line item, not an afterthought.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNDERS & SUPPORTERS -->
+  <div class="funders" id="funders">
+    <div class="wrap">
+      <div class="eyebrow sand">
+        <span class="num">02</span>
+        <h2 class="serif">Funders &amp; Supporters</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="funders-intro">
+        <p>Darkroom Contemporary and the Institute of Curiosity are made possible by public funding, private trusts, partnerships and in-kind support. Confirmed funder and partner credits will appear here.</p>
+      </div>
+
+      <div class="funder-cat">
+        <div class="fcat-label">Public funding</div>
+        <div class="funder-logos">
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Public funder 01</span></div></div>
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Public funder 02</span></div></div>
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Public funder 03</span></div></div>
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Public funder 04</span></div></div>
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Public funder 05</span></div></div>
+        </div>
+      </div>
+
+      <div class="funder-cat">
+        <div class="fcat-label">Trusts &amp; Foundations</div>
+        <div class="funder-logos">
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Trust 01</span></div></div>
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Trust 02</span></div></div>
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Foundation 01</span></div></div>
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Foundation 02</span></div></div>
+        </div>
+      </div>
+
+      <div class="funder-cat">
+        <div class="fcat-label">Partners</div>
+        <div class="funder-logos">
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Venue partner</span></div></div>
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Corporate partner</span></div></div>
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Media partner</span></div></div>
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Production partner</span></div></div>
+        </div>
+      </div>
+
+      <div class="funder-cat">
+        <div class="fcat-label">In-kind support</div>
+        <div class="funder-logos">
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Studio space</span></div></div>
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Photography</span></div></div>
+          <div class="flogo"><div><span class="fl-name">Logo placeholder</span><span class="fl-type">Print</span></div></div>
+        </div>
+      </div>
+
+      <p class="funder-note">Funder and partner credits to be supplied. If your organisation funds or supports Darkroom Contemporary, please <a href="mailto:hello@darkroomcontemporary.co.za" style="color:var(--sand-ink);text-decoration:underline;text-underline-offset:3px">contact us</a>.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="fgrid">
+        <div class="fcol">
+          <div style="font:600 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--bone);margin-bottom:5px">Darkroom Contemporary</div>
+          <div style="font:400 10px/1 var(--sans);letter-spacing:.3em;color:var(--bone-dim);margin-bottom:16px">Cape Town · Est. 2011</div>
+          <p style="max-width:34ch">Cape Town–based contemporary performance creation company. Live dance, dance film and screen dance, made to tour internationally.</p>
+          <p style="margin-top:14px">Bree Street, Cape Town</p>
+          <p><a href="mailto:hello@darkroomcontemporary.co.za" style="display:inline;color:var(--bone)">hello@darkroomcontemporary.co.za</a></p>
+        </div>
+        <div class="fcol">
+          <h4>Navigate</h4>
+          <a href="/company">Darkroom Contemporary</a>
+          <a href="/institute">Institute of Curiosity</a>
+          <a href="/fuel-the-lab">Fuel the Lab</a>
+        </div>
+        <div class="fcol" id="subscribe">
+          <h4>Stay close to the work</h4>
+          <div class="signup">
+            <input type="email" placeholder="Your email" aria-label="Email address">
+            <button type="button">Subscribe</button>
+          </div>
+          <div style="margin-top:14px"><a href="#give" style="display:inline-flex;align-items:center;gap:8px;color:var(--clay);font:500 13px var(--sans);letter-spacing:.03em">◇ Fuel the Lab</a></div>
+          <p style="margin-top:16px;font-size:12px;color:var(--bone-dim)">Darkroom Contemporary NPO (089-552 NPO · PBO 930 043 891). Section 18A receipts issued.</p>
+        </div>
+      </div>
+      <div class="fbottom">
+        <span>© 2026 Darkroom Contemporary NPO. All rights reserved.</span>
+        <span class="fsoc"><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">Vimeo</a></span>
+      </div>
+      <p style="font-size:11px;color:#6f6c66;margin-top:22px;max-width:60ch">Every image on this site is credited: photographer, dancer, year. Imagery shown here is placeholder; studio photography to be commissioned before launch.</p>
+    </div>
+  </footer>
+
+<script>
+  function selectAmt(btn){
+    document.querySelectorAll('.amt-btn').forEach(function(b){ b.classList.remove('on'); });
+    btn.classList.add('on');
+    var customAmt = document.getElementById('customAmt');
+    if(customAmt) customAmt.value = '';
+  }
+  var customAmt = document.getElementById('customAmt');
+  if(customAmt){
+    customAmt.addEventListener('focus', function(){
+      document.querySelectorAll('.amt-btn').forEach(function(b){ b.classList.remove('on'); });
+    });
+  }
+</script>
+</body>
+</html>

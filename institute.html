@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Institute of Curiosity — Powered by Darkroom Contemporary</title>
+<meta name="description" content="The Institute of Curiosity is Darkroom Contemporary's platform for movement practice, emerging artists, public discourse and screen dance. Bree Street, Cape Town.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161514; --char:#1c1b1a; --char2:#232220; --char3:#2b2926;
+    --bone:#EEEDE9; --bone-2:#d8d6cf; --bone-dim:#a4a199;
+    --maroon:#9a3340; --maroon-deep:#6B2737; --clay:#c98a4b; --sand:#e7ddc9; --sand-2:#d4c9af; --sand-ink:#5a4a2f; --sand-dim:#8a7b60;
+    --line:rgba(238,237,233,.14); --line-2:rgba(238,237,233,.28);
+    --sand-line:rgba(90,74,47,.16); --sand-line-2:rgba(90,74,47,.28);
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --maxw:1240px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--sans);
+    font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;letter-spacing:.005em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .serif{font-family:var(--serif)}
+  .kicker{font:500 12px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim)}
+
+  /* placeholder wells */
+  .ph{position:relative;overflow:hidden;background:
+      radial-gradient(120% 100% at 30% 0%,#34322f 0%,#211f1d 55%,#171513 100%);
+    border:1px solid var(--line)}
+  .ph::before{content:attr(data-kind);position:absolute;left:14px;top:12px;
+    font:500 10px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#6f6c66}
+  .ph .credit{position:absolute;left:14px;bottom:11px;right:14px;
+    font:400 10.5px/1.3 var(--sans);letter-spacing:.04em;color:#8a8780}
+  .ph .glyph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font:300 26px/1 var(--serif);color:#46433e;letter-spacing:.3em}
+  .ph.sand-ph{background:radial-gradient(120% 100% at 30% 0%,#d4c9b0 0%,#bfb49a 55%,#afa490 100%);
+    border-color:var(--sand-line)}
+  .ph.sand-ph::before{color:var(--sand-dim)}
+  .ph.sand-ph .credit{color:var(--sand-dim)}
+  .ph.sand-ph .glyph{color:var(--sand-2)}
+
+  /* utility bar */
+  .ubar{border-bottom:1px solid var(--line);font-size:12px;color:var(--bone-dim)}
+  .ubar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}
+  .ubar .r{display:flex;gap:18px;align-items:center}
+  .ubar a:hover{color:var(--bone)}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(22,21,20,.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font:600 19px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bone)}
+  .logo small{display:block;font:400 9.5px/1 var(--sans);letter-spacing:.42em;color:var(--bone-dim);margin-top:5px}
+  nav.links{display:flex;gap:26px;align-items:center}
+  nav.links a{font:500 13px/1 var(--sans);letter-spacing:.02em;color:var(--bone-2);position:relative;padding:6px 0}
+  nav.links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1.5px;background:var(--maroon);transition:right .28s ease}
+  nav.links a:hover{color:var(--bone)}
+  nav.links a:hover::after{right:0}
+  nav.links a.active{color:var(--bone)}
+  nav.links a.active::after{right:0}
+  .btn{display:inline-flex;align-items:center;gap:8px;font:500 13px/1 var(--sans);letter-spacing:.04em;
+    padding:11px 20px;border-radius:2px;border:1px solid var(--maroon);background:var(--maroon);color:#fff;
+    transition:background .2s,transform .2s}
+  .btn:hover{background:var(--maroon-deep);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--bone);border-color:var(--line-2)}
+  .btn.ghost:hover{border-color:var(--bone);background:transparent}
+  .btn.sand{background:var(--sand-ink);border-color:var(--sand-ink);color:var(--sand)}
+  .btn.sand:hover{background:#3e3220;transform:translateY(-1px)}
+  .btn.sand-ghost{background:transparent;border-color:var(--sand-line-2);color:var(--sand-ink)}
+  .btn.sand-ghost:hover{border-color:var(--sand-ink);background:transparent}
+  .burger{display:none;background:none;border:0;color:var(--bone);font-size:24px;cursor:pointer}
+  .tlink{display:inline-flex;align-items:center;gap:9px;font:500 13px/1 var(--sans);letter-spacing:.04em}
+  .tlink .ar{transition:transform .25s}
+  .tlink:hover .ar{transform:translateX(5px)}
+
+  /* breadcrumb */
+  .breadcrumb{border-bottom:1px solid var(--line);font-size:12px;color:var(--bone-dim)}
+  .breadcrumb .wrap{display:flex;align-items:center;gap:10px;height:38px}
+  .breadcrumb a:hover{color:var(--bone)}
+  .breadcrumb .sep{opacity:.4}
+  .breadcrumb .cur{color:var(--bone)}
+
+  /* page hero — warm amber */
+  .pg-hero{position:relative;height:clamp(420px,62vh,640px);overflow:hidden;
+    background:#110d07;display:flex;align-items:flex-end}
+  .pg-hero .bg{position:absolute;inset:0;
+    background:radial-gradient(130% 120% at 38% 12%,#4e3a22 0%,#2e2012 50%,#120c06 100%)}
+  .pg-hero .bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.06) 0%,rgba(0,0,0,.02) 35%,rgba(17,13,7,.92) 100%)}
+  .pg-hero .ghost{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font:300 84px/1 var(--serif);color:rgba(231,221,201,.05);letter-spacing:.35em;
+    text-transform:uppercase;pointer-events:none;white-space:nowrap}
+  .pg-hero .inner{position:relative;z-index:2;width:100%;padding-bottom:60px}
+  .pg-hero .lockup{font:400 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;
+    color:var(--clay);margin-bottom:14px}
+  .pg-hero .tag{display:inline-block;font:500 11px/1 var(--sans);letter-spacing:.2em;
+    text-transform:uppercase;color:var(--bone);border:1px solid rgba(201,138,75,.4);
+    border-radius:2px;padding:6px 11px;margin-bottom:18px;background:rgba(201,138,75,.08)}
+  .pg-hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(34px,5.2vw,68px);
+    line-height:1.02;letter-spacing:-.01em;margin:0 0 16px;max-width:22ch}
+  .pg-hero h1 em{font-style:italic}
+  .pg-hero .sub{font-size:15.5px;color:var(--bone-2);max-width:52ch;line-height:1.65}
+
+  /* section scaffolding */
+  section{padding:88px 0}
+  .eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:48px}
+  .eyebrow .num{font:500 12px/1 var(--sans);letter-spacing:.1em;color:var(--maroon)}
+  .eyebrow h2{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3.4vw,40px);margin:0;letter-spacing:-.01em}
+  .eyebrow .rule{flex:1;height:1px;background:var(--line)}
+
+  /* what the institute is — sand/light */
+  .ioc-about{background:var(--sand);color:#2c2620;padding:88px 0;
+    border-top:1px solid var(--sand-line);border-bottom:1px solid var(--sand-line)}
+  .about-grid{display:grid;grid-template-columns:1fr 2.2fr;gap:72px;align-items:start}
+  .about-aside .pull{font-family:var(--serif);font-weight:300;font-style:italic;
+    font-size:clamp(18px,2vw,24px);line-height:1.45;color:var(--sand-ink);margin:0 0 28px}
+  .about-aside .powered{margin-top:28px;padding-top:22px;border-top:1px solid var(--sand-line)}
+  .about-aside .powered .label{font:600 10px/1 var(--sans);letter-spacing:.2em;
+    text-transform:uppercase;color:var(--sand-dim);margin-bottom:10px}
+  .about-aside .powered p{font-size:13px;color:var(--sand-ink);line-height:1.6;margin:0}
+  .about-body p{font-size:16px;color:var(--sand-ink);line-height:1.8;margin:0 0 18px;max-width:56ch}
+  .about-body p:last-of-type{margin-bottom:0}
+  .about-body .cta-row{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+  .about-body .ref{font-size:13px;color:var(--sand-dim);line-height:1.6;margin-top:22px;
+    border-left:2px solid var(--sand-2);padding-left:12px;font-style:italic}
+
+  /* programmes */
+  .programmes{background:var(--char2);border-top:1px solid var(--line);padding:88px 0}
+  .prog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line)}
+  .prog-card{background:var(--char);padding:32px 28px;display:flex;flex-direction:column;
+    transition:background .25s}
+  .prog-card:hover{background:var(--char3)}
+  .prog-card.phase2{opacity:.6}
+  .prog-card.phase2:hover{background:var(--char);opacity:.75}
+  .prog-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px}
+  .prog-num{font:500 10px/1 var(--sans);letter-spacing:.18em;color:var(--maroon);text-transform:uppercase}
+  .prog-badge{font:600 10px/1 var(--sans);letter-spacing:.1em;padding:5px 8px;
+    border-radius:2px;text-transform:uppercase;white-space:nowrap}
+  .prog-badge.free{background:rgba(201,138,75,.15);color:var(--clay)}
+  .prog-badge.ticketed{background:rgba(154,51,64,.15);color:var(--maroon)}
+  .prog-badge.apply{background:var(--line);color:var(--bone-dim)}
+  .prog-badge.p2{background:var(--line);color:var(--bone-dim)}
+  .prog-name{font-family:var(--serif);font-weight:300;font-size:clamp(17px,1.8vw,22px);
+    line-height:1.15;margin:0 0 12px;letter-spacing:-.01em}
+  .prog-rule{width:32px;height:1.5px;background:var(--maroon);margin-bottom:14px}
+  .prog-desc{font-size:14px;color:var(--bone-2);line-height:1.65;margin:0;flex:1}
+  .prog-cta{margin-top:20px;font:500 12px/1 var(--sans);letter-spacing:.08em;
+    color:var(--bone-dim);display:inline-flex;align-items:center;gap:7px;transition:color .2s}
+  .prog-card:hover .prog-cta{color:var(--bone)}
+  .prog-cta .ar{transition:transform .25s}
+  .prog-card:hover .prog-cta .ar{transform:translateX(4px)}
+
+  /* studio practice booking module */
+  .studio-module{border-top:1px solid var(--line);padding:88px 0}
+  .studio-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start}
+  .studio-desc h3{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.2vw,42px);
+    line-height:1.05;letter-spacing:-.01em;margin:0 0 18px}
+  .studio-desc h3 em{font-style:italic}
+  .studio-desc p{font-size:16px;color:var(--bone-2);line-height:1.75;max-width:46ch;margin:0 0 16px}
+  .studio-desc .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .schedule{margin-top:36px;border-top:1px solid var(--line);padding-top:28px}
+  .sched-label{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;
+    color:var(--bone-dim);margin-bottom:16px}
+  .sched-row{display:grid;grid-template-columns:90px 1fr auto;gap:14px;align-items:center;
+    padding:14px 0;border-bottom:1px solid var(--line)}
+  .sched-row:last-child{border-bottom:none}
+  .sched-day{font:600 10.5px/1 var(--sans);letter-spacing:.14em;color:var(--maroon);text-transform:uppercase}
+  .sched-time{font-family:var(--serif);font-size:16px;font-weight:300}
+  .sched-class{font-size:14px;color:var(--bone-2)}
+  .sched-spots{font:500 10.5px/1 var(--sans);letter-spacing:.1em;color:var(--bone-dim);text-transform:uppercase}
+
+  /* pricing panel */
+  .pricing-panel{background:var(--char);border:1px solid var(--line);padding:0}
+  .pricing-header{padding:24px 28px;border-bottom:1px solid var(--line)}
+  .pricing-header .ph-label{font:600 10px/1 var(--sans);letter-spacing:.2em;
+    text-transform:uppercase;color:var(--bone-dim);margin-bottom:6px}
+  .pricing-header p{font-size:14px;color:var(--bone-2);margin:0}
+  .price-row{display:flex;justify-content:space-between;align-items:center;
+    padding:18px 28px;border-bottom:1px solid var(--line)}
+  .price-row:last-of-type{border-bottom:none}
+  .price-row .p-name{font:500 14px/1.3 var(--sans)}
+  .price-row .p-detail{font:400 12px/1.3 var(--sans);color:var(--bone-dim);margin-top:3px}
+  .price-row .p-amt{font-family:var(--serif);font-size:22px;font-weight:300;
+    color:var(--bone);white-space:nowrap}
+  .price-row .p-save{font:500 10px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;
+    color:var(--clay);margin-top:3px;text-align:right}
+  .pricing-cta{padding:20px 28px;border-top:1px solid var(--line)}
+  .discount-box{margin-top:16px;background:var(--char);border:1px solid var(--line);padding:22px 28px}
+  .discount-box .db-label{font:600 10px/1 var(--sans);letter-spacing:.2em;
+    text-transform:uppercase;color:var(--bone-dim);margin-bottom:10px}
+  .discount-box p{font-size:13.5px;color:var(--bone-2);line-height:1.65;margin:0 0 14px}
+  .discount-box .upload-btn{display:inline-flex;align-items:center;gap:8px;font:500 13px/1 var(--sans);
+    letter-spacing:.04em;color:var(--bone);border:1px solid var(--line-2);
+    border-radius:2px;padding:10px 16px;transition:border-color .2s,background .2s;cursor:pointer}
+  .discount-box .upload-btn:hover{border-color:var(--bone);background:rgba(238,237,233,.04)}
+
+  /* fuel the lab */
+  .fuel-section{background:var(--sand);color:#2c2620;padding:88px 0;
+    border-top:1px solid var(--sand-line)}
+  .fuel-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+  .fuel-copy h2{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.2vw,42px);
+    line-height:1.05;letter-spacing:-.01em;color:var(--sand-ink);margin:0 0 20px}
+  .fuel-copy h2 em{font-style:italic}
+  .fuel-copy p{font-size:16px;color:var(--sand-ink);line-height:1.8;max-width:48ch;margin:0 0 14px}
+  .fuel-copy .npo-note{font-size:12px;color:var(--sand-dim);margin-top:6px}
+  .fuel-form .f-label{font:600 10px/1 var(--sans);letter-spacing:.2em;
+    text-transform:uppercase;color:var(--sand-dim);margin-bottom:16px}
+  .amount-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+  .amt-btn{border:1px solid var(--sand-line-2);background:transparent;color:var(--sand-ink);
+    padding:14px 8px;font-family:var(--serif);font-size:18px;font-weight:300;cursor:pointer;
+    border-radius:2px;transition:border-color .2s,background .2s;text-align:center}
+  .amt-btn:hover,.amt-btn.on{border-color:var(--sand-ink);background:rgba(90,74,47,.08)}
+  .custom-row{display:flex;border:1px solid var(--sand-line-2);border-radius:2px;overflow:hidden;margin-bottom:20px}
+  .custom-row span{padding:0 14px;background:rgba(90,74,47,.06);border-right:1px solid var(--sand-line-2);
+    display:flex;align-items:center;font:500 14px var(--sans);color:var(--sand-dim)}
+  .custom-row input{flex:1;border:0;background:transparent;padding:13px 14px;
+    font:400 15px var(--sans);color:var(--sand-ink);outline:none}
+  .custom-row input::placeholder{color:var(--sand-dim)}
+  .consent-sand{font-size:11.5px;color:var(--sand-dim);max-width:400px;line-height:1.55;margin-bottom:20px}
+  .consent-sand input{vertical-align:-1px;margin-right:7px;accent-color:var(--maroon-deep)}
+  .fuel-logos{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;padding-top:24px;
+    border-top:1px solid var(--sand-line)}
+  .f-logo-small{font:500 10px/1 var(--sans);letter-spacing:.1em;color:var(--sand-dim);
+    text-transform:uppercase;border:1px solid var(--sand-line);padding:6px 10px}
+
+  /* coming up */
+  .coming-up{border-top:1px solid var(--line);padding:88px 0}
+  .onlist{border-top:1px solid var(--line)}
+  .onrow{display:grid;grid-template-columns:120px 1fr 200px 130px;gap:20px;align-items:center;
+    padding:22px 6px;border-bottom:1px solid var(--line);transition:background .2s}
+  .onrow:hover{background:var(--char)}
+  .onrow .date{font-family:var(--serif);font-size:20px;font-weight:300}
+  .onrow .date small{display:block;font:500 10px/1 var(--sans);letter-spacing:.16em;
+    color:var(--bone-dim);text-transform:uppercase;margin-top:5px}
+  .onrow .ti{font-size:16px;font-weight:500}
+  .onrow .ti small{display:block;font-weight:400;color:var(--bone-dim);font-size:13px;margin-top:3px}
+  .onrow .ven{color:var(--bone-2);font-size:14px}
+  .btag{font:600 10px/1 var(--sans);letter-spacing:.1em;padding:6px 9px;border-radius:2px;text-transform:uppercase}
+  .btag.ioc{background:var(--sand);color:var(--sand-ink)}
+  .booklink{font:500 13px/1 var(--sans);color:var(--bone);display:inline-flex;gap:7px;align-items:center;justify-self:end}
+  .booklink:hover{color:var(--maroon)}
+
+  /* footer */
+  footer.site{background:var(--char2);border-top:1px solid var(--line);padding:56px 0 36px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:48px;
+    padding-bottom:48px;border-bottom:1px solid var(--line)}
+  .fcol h4{font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;
+    color:var(--bone-dim);margin:0 0 18px}
+  .fcol p,.fcol a{font-size:14px;color:var(--bone-2);margin:0 0 10px}
+  .fcol a{display:block}
+  .fcol a:hover{color:var(--bone)}
+  .signup{display:flex;border:1px solid var(--line-2);border-radius:2px;overflow:hidden;
+    margin:0 0 12px;max-width:340px}
+  .signup input{flex:1;background:transparent;border:0;color:var(--bone);
+    padding:13px 14px;font:400 14px var(--sans);outline:none}
+  .signup input::placeholder{color:#6f6c66}
+  .signup button{background:var(--maroon);color:#fff;border:0;padding:0 18px;
+    font:500 13px var(--sans);cursor:pointer}
+  .signup button:hover{background:var(--maroon-deep)}
+  .fbottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;
+    gap:14px;padding-top:26px;font-size:12px;color:var(--bone-dim)}
+  .fsoc{display:flex;gap:18px}
+  .fsoc a:hover{color:var(--bone)}
+
+  /* mobile */
+  .mmenu{display:none}
+  @media(max-width:1100px){
+    .prog-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:1000px){
+    nav.links{display:none}
+    .burger{display:block}
+    .mmenu.show{display:block;border-top:1px solid var(--line);background:var(--char)}
+    .mmenu a{display:block;padding:15px 28px;border-bottom:1px solid var(--line);
+      color:var(--bone-2);font:500 14px var(--sans)}
+    .about-grid{grid-template-columns:1fr;gap:36px}
+    .studio-inner{grid-template-columns:1fr;gap:40px}
+    .fuel-inner{grid-template-columns:1fr;gap:40px}
+    .onrow{grid-template-columns:84px 1fr;gap:10px 14px}
+    .onrow .ven{grid-column:2}
+    .onrow .booklink{grid-column:2;justify-self:start}
+    .fgrid{grid-template-columns:1fr;gap:34px}
+    .amount-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:640px){
+    .prog-grid{grid-template-columns:1fr}
+    .pg-hero{height:clamp(360px,55vh,520px)}
+  }
+</style>
+</head>
+<body>
+
+  <div class="ubar">
+    <div class="wrap">
+      <span>Cape Town · a Darkroom Contemporary platform</span>
+      <span class="r">
+        <a href="#">EN</a>
+        <a href="/fuel-the-lab">Fuel the Lab</a>
+        <a href="#">Instagram</a>
+      </span>
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="logo" href="/">Darkroom<small>Contemporary</small></a>
+      <nav class="links">
+        <a href="/">Home</a>
+        <a href="/company">Darkroom Contemporary</a>
+        <a href="/institute" class="active">Institute of Curiosity</a>
+        <a href="/fuel-the-lab">Fuel the Lab</a>
+      </nav>
+      <a class="btn" href="#studio">Book a class</a>
+      <button class="burger" aria-label="Open menu" onclick="document.getElementById('mm').classList.toggle('show')">☰</button>
+    </div>
+    <div class="mmenu" id="mm">
+      <a href="/">Home</a>
+      <a href="/company">Darkroom Contemporary</a>
+      <a href="/institute">Institute of Curiosity</a>
+      <a href="/fuel-the-lab">Fuel the Lab</a>
+    </div>
+  </header>
+
+  <div class="breadcrumb">
+    <div class="wrap">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <span class="cur">Institute of Curiosity</span>
+    </div>
+  </div>
+
+  <!-- PAGE HERO — warm amber tones -->
+  <div class="pg-hero">
+    <div class="bg"></div>
+    <div class="ghost">CURIOSITY</div>
+    <div class="wrap inner">
+      <div class="lockup">Institute of Curiosity · Powered by Darkroom Contemporary</div>
+      <h1 class="serif">An engine for innovative art form development, <em>animated by dance</em>.</h1>
+      <p class="sub">A platform for movement practice, emerging artists, public discourse and screen dance. Bree Street, Cape Town.</p>
+    </div>
+  </div>
+
+  <!-- 01 WHAT THE INSTITUTE IS -->
+  <div class="ioc-about" id="about">
+    <div class="wrap">
+      <div class="eyebrow">
+        <span class="num" style="color:var(--maroon-deep)">01</span>
+        <h2 class="serif" style="color:#2c2620">What the Institute is</h2>
+        <span style="flex:1;height:1px;background:var(--sand-line)"></span>
+      </div>
+      <div class="about-grid">
+        <div class="about-aside">
+          <p class="pull serif">"Curiosity is not a theme. It is a method. Questions are not a prelude to the work — they are the work."</p>
+          <div class="powered">
+            <div class="label">A Darkroom Contemporary platform</div>
+            <p>The Institute of Curiosity sits alongside Darkroom Contemporary as its open, public-facing platform. Two brands, one engine. Credibility flows from Darkroom into the Institute — and the Institute sustains the studio that makes the work possible.</p>
+          </div>
+        </div>
+        <div class="about-body">
+          <p>The Institute of Curiosity is Darkroom Contemporary's platform for movement practice, emerging artists, public discourse and screen dance. It is the living, open side of what Darkroom builds in private — the studio door left ajar for the curious.</p>
+          <p>The closest reference is William Kentridge's Centre for the Less Good Idea: an artist company and a public platform sitting side by side, credibility flowing one way, ideas flowing everywhere. What Darkroom makes in the studio, the Institute opens up to others.</p>
+          <p>The Institute operates from Darkroom's permanent studio on Bree Street, Cape Town. It is where the company's methods become available — through movement classes the public can attend, conversations the industry can join, labs where emerging artists work alongside the company, and free studio sessions for the freelance dance community.</p>
+          <p>None of the programmes here deliver a finished answer. They all make space to not know yet.</p>
+          <p class="ref">South Africa is the only country on the African continent actively integrating new technologies into contemporary dance at this scale. The Institute exists to ensure the ecosystem grows, not just the company.</p>
+          <div class="cta-row">
+            <a class="btn sand" href="#programmes">See the programmes</a>
+            <a class="btn sand-ghost" href="#studio">Book Studio Practice</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 PROGRAMMES -->
+  <div class="programmes" id="programmes">
+    <div class="wrap">
+      <div class="eyebrow" style="margin-bottom:40px">
+        <span class="num">02</span>
+        <h2 class="serif">The programmes</h2>
+        <span class="rule" style="flex:1;height:1px;background:var(--line)"></span>
+        <span class="kicker">26/27 calendar</span>
+      </div>
+      <div class="prog-grid">
+
+        <div class="prog-card">
+          <div class="prog-top">
+            <span class="prog-num">01</span>
+            <span class="prog-badge free">Free</span>
+          </div>
+          <div class="prog-name serif">Studio Sessions</div>
+          <div class="prog-rule"></div>
+          <p class="prog-desc">Open studio time at the Bree Street studio for the freelance dance community. No programme, no outcome — space to practise, rehearse, or think alongside working Darkroom artists.</p>
+          <a class="prog-cta tlink" href="#">Find out more <span class="ar">→</span></a>
+        </div>
+
+        <div class="prog-card">
+          <div class="prog-top">
+            <span class="prog-num">02</span>
+            <span class="prog-badge ticketed">Ticketed</span>
+          </div>
+          <div class="prog-name serif">Studio Practice</div>
+          <div class="prog-rule"></div>
+          <p class="prog-desc">Morning and evening movement classes for adults who want to practise alongside working dance artists. Technical and exploratory, taught at the Bree Street studio. Professional and student rates available.</p>
+          <a class="prog-cta tlink" href="#studio">Book a class <span class="ar">→</span></a>
+        </div>
+
+        <div class="prog-card">
+          <div class="prog-top">
+            <span class="prog-num">03</span>
+            <span class="prog-badge ticketed">Ticketed</span>
+          </div>
+          <div class="prog-name serif">Deep Space Discourse</div>
+          <div class="prog-rule"></div>
+          <p class="prog-desc">A series of structured conversations on the questions that matter in contemporary performance — technology, identity, distribution, labour, the future of touring. Open to practitioners, students and curious observers.</p>
+          <a class="prog-cta tlink" href="#">Upcoming events <span class="ar">→</span></a>
+        </div>
+
+        <div class="prog-card">
+          <div class="prog-top">
+            <span class="prog-num">04</span>
+            <span class="prog-badge apply">By application</span>
+          </div>
+          <div class="prog-name serif">Screen Dance Lab</div>
+          <div class="prog-rule"></div>
+          <p class="prog-desc">A working lab for emerging artists exploring the making of dance film and screen dance. Participants develop and produce original screen work with Darkroom's technical and creative support.</p>
+          <a class="prog-cta tlink" href="#">Apply <span class="ar">→</span></a>
+        </div>
+
+        <div class="prog-card">
+          <div class="prog-top">
+            <span class="prog-num">05</span>
+            <span class="prog-badge apply">Residency</span>
+          </div>
+          <div class="prog-name serif">Physical Thinking Lab</div>
+          <div class="prog-rule"></div>
+          <p class="prog-desc">A space for artists in the middle of a process. The Physical Thinking Lab offers time, space and peer-to-peer exchange for work that is not yet finished — and not yet trying to be.</p>
+          <a class="prog-cta tlink" href="#">Find out more <span class="ar">→</span></a>
+        </div>
+
+        <div class="prog-card">
+          <div class="prog-top">
+            <span class="prog-num">06</span>
+            <span class="prog-badge ticketed">Workshop</span>
+          </div>
+          <div class="prog-name serif">Arts Entrepreneurship</div>
+          <div class="prog-rule"></div>
+          <p class="prog-desc">A practical programme covering the business of an arts practice: funding, contracts, digital presence, audience development, and financial literacy. For emerging practitioners ready to make their practice sustainable.</p>
+          <a class="prog-cta tlink" href="#">Upcoming dates <span class="ar">→</span></a>
+        </div>
+
+        <div class="prog-card">
+          <div class="prog-top">
+            <span class="prog-num">07</span>
+            <span class="prog-badge free">Free to attend</span>
+          </div>
+          <div class="prog-name serif">Unfinished</div>
+          <div class="prog-rule"></div>
+          <p class="prog-desc">Informal showings of work in progress — performances that are not yet ready to be performances. A platform for emerging artists to share work and receive feedback in a professional setting, with a real audience.</p>
+          <a class="prog-cta tlink" href="#">Upcoming showings <span class="ar">→</span></a>
+        </div>
+
+        <div class="prog-card phase2">
+          <div class="prog-top">
+            <span class="prog-num">08</span>
+            <span class="prog-badge p2">Phase 2</span>
+          </div>
+          <div class="prog-name serif">Cape Town Screen Dance Festival</div>
+          <div class="prog-rule" style="background:var(--bone-dim)"></div>
+          <p class="prog-desc">A dedicated festival for screen dance and dance film, presented by the Institute of Curiosity in partnership with Darkroom Contemporary. Full programme forthcoming — September 2026.</p>
+          <a class="prog-cta tlink" href="#">Register interest <span class="ar">→</span></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 STUDIO PRACTICE — BOOKING MODULE -->
+  <section class="studio-module" id="studio">
+    <div class="wrap">
+      <div class="eyebrow">
+        <span class="num">03</span>
+        <h2 class="serif">Studio Practice — book a class</h2>
+        <span class="rule" style="flex:1;height:1px;background:var(--line)"></span>
+      </div>
+      <div class="studio-inner">
+
+        <div class="studio-desc">
+          <h3 class="serif">Movement classes for adults. <em>Practise alongside working artists.</em></h3>
+          <p>Studio Practice is the Institute's ticketed public class programme — morning and evening sessions taught by Darkroom's resident artists at the Bree Street studio. Classes are technical and exploratory, suitable for adults with some movement experience.</p>
+          <p>Classes run weekly. Drop-in welcome. Class packs save you money. Professional and student rates are available: upload a portfolio or student card to receive your discount code at checkout.</p>
+          <div class="cta-row">
+            <a class="btn" href="#">Book online</a>
+            <a class="btn ghost" href="#">Download class schedule</a>
+          </div>
+
+          <div class="schedule">
+            <div class="sched-label">Weekly schedule — Bree Street studio</div>
+            <div class="sched-row">
+              <span class="sched-day">Mon</span>
+              <div>
+                <div class="sched-time serif">07:30</div>
+                <div class="sched-class">Technique &amp; Floorwork</div>
+              </div>
+              <span class="sched-spots">6 spots left</span>
+            </div>
+            <div class="sched-row">
+              <span class="sched-day">Wed</span>
+              <div>
+                <div class="sched-time serif">07:30</div>
+                <div class="sched-class">Contemporary Improvisation</div>
+              </div>
+              <span class="sched-spots">Available</span>
+            </div>
+            <div class="sched-row">
+              <span class="sched-day">Wed</span>
+              <div>
+                <div class="sched-time serif">18:30</div>
+                <div class="sched-class">Body Conditioning</div>
+              </div>
+              <span class="sched-spots">Available</span>
+            </div>
+            <div class="sched-row">
+              <span class="sched-day">Fri</span>
+              <div>
+                <div class="sched-time serif">07:30</div>
+                <div class="sched-class">Technique &amp; Floorwork</div>
+              </div>
+              <span class="sched-spots">3 spots left</span>
+            </div>
+            <div class="sched-row">
+              <span class="sched-day">Sat</span>
+              <div>
+                <div class="sched-time serif">09:00</div>
+                <div class="sched-class">Open Practice</div>
+              </div>
+              <span class="sched-spots">Available</span>
+            </div>
+            <p style="font-size:12px;color:var(--bone-dim);margin-top:14px;line-height:1.5">Schedule placeholder — confirm with Louise before launch. Live booking integration (WooCommerce / PayFast) to be connected before 1 July.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="pricing-panel">
+            <div class="pricing-header">
+              <div class="ph-label">Pricing</div>
+              <p>All classes at the Bree Street studio. PayFast and Yoco accepted.</p>
+            </div>
+            <div class="price-row">
+              <div>
+                <div class="p-name">Drop-in class</div>
+                <div class="p-detail">Single session, any class</div>
+              </div>
+              <div style="text-align:right">
+                <div class="p-amt serif">R150</div>
+              </div>
+            </div>
+            <div class="price-row">
+              <div>
+                <div class="p-name">5-class pack</div>
+                <div class="p-detail">Valid 3 months from purchase</div>
+              </div>
+              <div style="text-align:right">
+                <div class="p-amt serif">R650</div>
+                <div class="p-save">Save R100</div>
+              </div>
+            </div>
+            <div class="price-row">
+              <div>
+                <div class="p-name">10-class pack</div>
+                <div class="p-detail">Valid 6 months from purchase</div>
+              </div>
+              <div style="text-align:right">
+                <div class="p-amt serif">R1,200</div>
+                <div class="p-save">Save R300</div>
+              </div>
+            </div>
+            <div class="price-row" style="background:rgba(154,51,64,.04)">
+              <div>
+                <div class="p-name">Professional rate</div>
+                <div class="p-detail">Portfolio verification required</div>
+              </div>
+              <div style="text-align:right">
+                <div class="p-amt serif">R80</div>
+                <div class="p-save" style="color:var(--maroon)">Per class</div>
+              </div>
+            </div>
+            <div class="price-row" style="background:rgba(154,51,64,.04)">
+              <div>
+                <div class="p-name">Student rate</div>
+                <div class="p-detail">Student card verification required</div>
+              </div>
+              <div style="text-align:right">
+                <div class="p-amt serif">R80</div>
+                <div class="p-save" style="color:var(--maroon)">Per class</div>
+              </div>
+            </div>
+            <div class="pricing-cta">
+              <a class="btn" href="#" style="width:100%;justify-content:center">Book a class</a>
+              <p style="font-size:11.5px;color:var(--bone-dim);margin-top:12px;line-height:1.5">Cancellations accepted up to 24 hours before class. No refunds after that time — class credit issued instead.</p>
+            </div>
+          </div>
+
+          <div class="discount-box">
+            <div class="db-label">Professional &amp; student discount</div>
+            <p>Upload a portfolio, CV, or valid student card to receive your discount code. Used at checkout for the professional or student rate on any class or pack.</p>
+            <label class="upload-btn">
+              <input type="file" style="display:none" accept=".pdf,.jpg,.png,.doc,.docx">
+              ↑ Upload portfolio or student card
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 COMING UP -->
+  <section class="coming-up" id="whatson">
+    <div class="wrap">
+      <div class="eyebrow">
+        <span class="num">05</span>
+        <h2 class="serif">Coming up at the Institute</h2>
+        <span class="rule" style="flex:1;height:1px;background:var(--line)"></span>
+        <a class="kicker" href="#" style="color:var(--bone-dim)">Full calendar →</a>
+      </div>
+      <div class="onlist">
+        <div class="onrow">
+          <div class="date">07 Jun<small>2026 · Sun</small></div>
+          <div class="ti">Studio Practice — morning class<small>Technique &amp; Floorwork · Bree Street studio</small></div>
+          <div class="ven">Bree Street studio, Cape Town</div>
+          <a class="booklink" href="#">Book <span>→</span></a>
+        </div>
+        <div class="onrow">
+          <div class="date">14 Jun<small>2026 · Sat</small></div>
+          <div class="ti">Deep Space Discourse<small>Public conversation · ticketed</small></div>
+          <div class="ven">Bree Street studio, Cape Town</div>
+          <a class="booklink" href="#">Book <span>→</span></a>
+        </div>
+        <div class="onrow">
+          <div class="date">Jul<small>2026</small></div>
+          <div class="ti">Unfinished — emerging artist showings<small>Free to attend · register to secure a seat</small></div>
+          <div class="ven">Bree Street studio, Cape Town</div>
+          <a class="booklink" href="#">Register <span>→</span></a>
+        </div>
+        <div class="onrow">
+          <div class="date">Ongoing</div>
+          <div class="ti">Screen Dance Lab — applications open<small>For emerging artists · by application</small></div>
+          <div class="ven">Bree Street studio, Cape Town</div>
+          <a class="booklink" href="#">Apply <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="fgrid">
+        <div class="fcol">
+          <div style="font:600 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--bone);margin-bottom:5px">Institute of Curiosity</div>
+          <div style="font:400 10px/1 var(--sans);letter-spacing:.3em;color:var(--bone-dim);margin-bottom:16px">Powered by Darkroom Contemporary</div>
+          <p style="max-width:34ch">A platform for movement practice, emerging artists, public discourse and screen dance.</p>
+          <p style="margin-top:14px">Bree Street, Cape Town</p>
+          <p><a href="mailto:hello@darkroomcontemporary.co.za" style="display:inline;color:var(--bone)">hello@darkroomcontemporary.co.za</a></p>
+        </div>
+        <div class="fcol">
+          <h4>Programmes</h4>
+          <a href="#programmes">Studio Sessions — Free</a>
+          <a href="#studio">Studio Practice — Book a class</a>
+          <a href="#programmes">Deep Space Discourse</a>
+          <a href="#programmes">Screen Dance Lab</a>
+          <a href="#programmes">Unfinished</a>
+          <a href="#programmes">All programmes</a>
+        </div>
+        <div class="fcol">
+          <h4>Stay close to the work</h4>
+          <div class="signup">
+            <input type="email" placeholder="Your email" aria-label="Email address">
+            <button type="button">Subscribe</button>
+          </div>
+          <div style="margin-top:14px"><a href="/fuel-the-lab" style="display:inline-flex;align-items:center;gap:8px;color:var(--clay);font:500 13px var(--sans);letter-spacing:.03em">◇ Fuel the Lab</a></div>
+          <p style="margin-top:16px;font-size:12px;color:var(--bone-dim)">Institute of Curiosity is a platform powered by Darkroom Contemporary NPO (089-552 NPO).</p>
+        </div>
+      </div>
+      <div class="fbottom">
+        <span>© 2026 Darkroom Contemporary NPO. All rights reserved.</span>
+        <span class="fsoc"><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">Vimeo</a></span>
+      </div>
+      <p style="font-size:11px;color:#6f6c66;margin-top:22px;max-width:60ch">Every image on this site is credited: photographer, dancer, year. Imagery shown here is placeholder; studio photography to be commissioned before launch.</p>
+    </div>
+  </footer>
+
+<script>
+  function selectAmt(btn){
+    document.querySelectorAll('.amt-btn').forEach(function(b){ b.classList.remove('on'); });
+    btn.classList.add('on');
+    var customAmt = document.getElementById('customAmt');
+    if(customAmt) customAmt.value = '';
+  }
+  var customAmt = document.getElementById('customAmt');
+  if(customAmt){
+    customAmt.addEventListener('focus', function(){
+      document.querySelectorAll('.amt-btn').forEach(function(b){ b.classList.remove('on'); });
+    });
+  }
+</script>
+</body>
+</html>

@@ -121,7 +121,10 @@
   .pillar .ghost-num{position:absolute;right:-12px;bottom:-20px;
     font:300 200px/1 var(--serif);color:rgba(238,237,233,.03);
     letter-spacing:-.04em;pointer-events:none;line-height:.85}
-  .pillar-img{position:relative;aspect-ratio:4/3;margin-bottom:28px}
+  .pillar-img{position:relative;aspect-ratio:4/3;margin-bottom:28px;border-radius:5px;overflow:hidden}
+  .pillar-img img{width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .6s cubic-bezier(.25,.46,.45,.94),filter .6s ease}
+  .pillar:hover .pillar-img img{transform:scale(1.06) rotate(1deg);filter:brightness(1.1) contrast(1.05)}
   .pillar .num{font:500 11px/1 var(--sans);letter-spacing:.2em;color:var(--maroon);
     text-transform:uppercase;margin-bottom:22px}
   .pillar h3{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.4vw,32px);
@@ -148,7 +151,6 @@
 
   /* founders & team */
   .founders-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
-  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
   .person-portrait{position:relative;aspect-ratio:3/4;overflow:hidden;margin-bottom:16px}
   .person-name{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.1;margin:0 0 5px}
   .person-role{font:500 10.5px/1 var(--sans);letter-spacing:.16em;color:var(--maroon);
@@ -159,8 +161,17 @@
   .person-link{display:inline-flex;align-items:center;gap:6px;font:500 12px/1 var(--sans);
     letter-spacing:.08em;color:var(--bone-dim);margin-top:12px;transition:color .2s}
   .person-link:hover{color:var(--bone)}
-  .team-grid .person-name{font-size:16px}
-  .team-grid .person-role{font-size:10px;margin-bottom:0}
+
+  /* production team — typographic list */
+  .team-list{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
+  .team-member{display:flex;justify-content:space-between;align-items:baseline;
+    padding:20px 0;border-bottom:1px solid var(--line);gap:24px;
+    transition:background .2s}
+  .team-member:hover{padding-left:12px;padding-right:12px;margin:0 -12px}
+  .tm-name{font-family:var(--serif);font-weight:300;font-size:clamp(18px,1.8vw,22px);
+    letter-spacing:-.01em;color:var(--bone)}
+  .tm-role{font:500 10px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;
+    color:var(--maroon);text-align:right;flex-shrink:0}
 
   /* press */
   .press{background:var(--char);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -395,7 +406,7 @@
       </div>
 
       <div class="rep-item">
-        <div class="rep-img"><div class="ph-tile"><span class="ph-label">Image · autoplay</span></div></div>
+        <div class="rep-img"><img src="../images/selected-repertoire/AI%20Opera%20%C2%B7%202024%20%3A%202026%20autoplay.jpg" alt="autoplay" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:4px"></div>
         <div class="rep-text">
           <div class="year-tag">AI Opera · 2024 / 2026</div>
           <h3 class="serif"><em>autoplay</em></h3>
@@ -405,7 +416,7 @@
       </div>
 
       <div class="rep-item rev">
-        <div class="rep-img"><div class="ph-tile"><span class="ph-label">Image · Blue Funk</span></div></div>
+        <div class="rep-img"><img src="../images/selected-repertoire/Screen%20dance%20%C2%B7%202023%20Blue%20Funk.png" alt="Blue Funk" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:4px"></div>
         <div class="rep-text">
           <div class="year-tag">Screen dance · 2023</div>
           <h3 class="serif"><em>Blue Funk</em></h3>
@@ -416,7 +427,7 @@
       </div>
 
       <div class="rep-item">
-        <div class="rep-img"><div class="ph-tile"><span class="ph-label">Image · e.id</span></div></div>
+        <div class="rep-img"><img src="../images/selected-repertoire/New%20work%20%C2%B7%20Premiere%20August%202026%20e%20i%20d.jpg" alt="e.id" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:4px"></div>
         <div class="rep-text">
           <div class="year-tag">New work · Premiere August 2026</div>
           <h3 class="serif"><em>e.id</em></h3>
@@ -426,7 +437,7 @@
       </div>
 
       <div class="rep-item rev">
-        <div class="rep-img"><div class="ph-tile"><span class="ph-label">Image · blame it on the algorithm</span></div></div>
+        <div class="rep-img"><img src="../images/selected-repertoire/Live%20performance%20%C2%B7%202024%20blame%20it%20on%20the%20algorithm.png" alt="blame it on the algorithm" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:4px"></div>
         <div class="rep-text">
           <div class="year-tag">Live performance · 2024</div>
           <h3 class="serif"><em>blame it on the algorithm</em></h3>
@@ -472,7 +483,7 @@
       <div class="founders-grid">
 
         <div class="person">
-          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Louise Coetzer</span></div></div>
+          <div class="person-portrait"><img src="../images/founders/Louise%20Coetzer%20Executive%20Artistic%20Director%20%C2%B7%20Choreographer.jpg" alt="Louise Coetzer" style="width:100%;height:100%;object-fit:cover;display:block"></div>
           <div class="person-name serif">Louise Coetzer</div>
           <div class="person-role">Executive Artistic Director · Choreographer</div>
           <div class="person-bio">
@@ -483,7 +494,7 @@
         </div>
 
         <div class="person">
-          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Oscar O'Ryan</span></div></div>
+          <div class="person-portrait"><img src="../images/founders/Oscar%20O%27Ryan%20Co-founder%20%C2%B7%20Cinematographer%20%C2%B7%20Visual%20Artist.jpg" alt="Oscar O'Ryan" style="width:100%;height:100%;object-fit:cover;display:block"></div>
           <div class="person-name serif">Oscar O'Ryan</div>
           <div class="person-role">Co-founder · Cinematographer · Visual Artist</div>
           <div class="person-bio">
@@ -505,62 +516,18 @@
         <h2 class="serif">Production</h2>
         <span class="rule"></span>
       </div>
-      <div class="team-grid">
-        <div class="person">
-          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Robyn Pretorius</span></div></div>
-          <div class="person-name serif">Robyn Pretorius</div>
-          <div class="person-role">Company Creative Producer</div>
-        </div>
-        <div class="person">
-          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Natalie Fisher</span></div></div>
-          <div class="person-name serif">Natalie Fisher</div>
-          <div class="person-role">Rehearsal Director</div>
-        </div>
-        <div class="person">
-          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Yarisha Singh</span></div></div>
-          <div class="person-name serif">Yarisha Singh</div>
-          <div class="person-role">Rehearsal Director</div>
-        </div>
-        <div class="person">
-          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Darion Adams</span></div></div>
-          <div class="person-name serif">Darion Adams</div>
-          <div class="person-role">Rehearsal Director</div>
-        </div>
-        <div class="person">
-          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Donna Gungulo</span></div></div>
-          <div class="person-name serif">Donna Gungulo</div>
-          <div class="person-role">Fundraising &amp; Partnerships</div>
-        </div>
-        <div class="person">
-          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Renee Holleman</span></div></div>
-          <div class="person-name serif">Renee Holleman</div>
-          <div class="person-role">Partnerships Associate</div>
-        </div>
-        <div class="person">
-          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Nkosinathi Sangweni</span></div></div>
-          <div class="person-name serif">Nkosinathi Sangweni</div>
-          <div class="person-role">Project Co-Ordinator</div>
-        </div>
-        <div class="person">
-          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Dian Harcovecchio</span></div></div>
-          <div class="person-name serif">Dian Harcovecchio</div>
-          <div class="person-role">Resident Stage Manager</div>
-        </div>
-        <div class="person">
-          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Lukho Witbooi</span></div></div>
-          <div class="person-name serif">Lukho Witbooi</div>
-          <div class="person-role">Copywriting</div>
-        </div>
-        <div class="person">
-          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Otlile Lebelo</span></div></div>
-          <div class="person-name serif">Otlile Lebelo</div>
-          <div class="person-role">Administrative</div>
-        </div>
-        <div class="person">
-          <div class="person-portrait"><div class="ph-tile"><span class="ph-label">Portrait · Zandile Salukazana</span></div></div>
-          <div class="person-name serif">Zandile Salukazana</div>
-          <div class="person-role">Digital Intern</div>
-        </div>
+      <div class="team-list">
+        <div class="team-member"><span class="tm-name">Robyn Pretorius</span><span class="tm-role">Company Creative Producer</span></div>
+        <div class="team-member"><span class="tm-name">Natalie Fisher</span><span class="tm-role">Rehearsal Director</span></div>
+        <div class="team-member"><span class="tm-name">Yarisha Singh</span><span class="tm-role">Rehearsal Director</span></div>
+        <div class="team-member"><span class="tm-name">Darion Adams</span><span class="tm-role">Rehearsal Director</span></div>
+        <div class="team-member"><span class="tm-name">Donna Gungulo</span><span class="tm-role">Fundraising &amp; Partnerships</span></div>
+        <div class="team-member"><span class="tm-name">Renee Holleman</span><span class="tm-role">Partnerships Associate</span></div>
+        <div class="team-member"><span class="tm-name">Nkosinathi Sangweni</span><span class="tm-role">Project Co-Ordinator</span></div>
+        <div class="team-member"><span class="tm-name">Dian Harcovecchio</span><span class="tm-role">Resident Stage Manager</span></div>
+        <div class="team-member"><span class="tm-name">Lukho Witbooi</span><span class="tm-role">Copywriting</span></div>
+        <div class="team-member"><span class="tm-name">Otlile Lebelo</span><span class="tm-role">Administrative</span></div>
+        <div class="team-member"><span class="tm-name">Zandile Salukazana</span><span class="tm-role">Digital Intern</span></div>
       </div>
     </div>
   </section>

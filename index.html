@@ -229,10 +229,19 @@
     .hero-arrow{font-size:40px;padding:0 12px;opacity:.4}
     .archive-callout{padding:32px;flex-direction:column;align-items:flex-start}
   }
+  @media(max-width:640px){
+    .ubar .wrap > span:first-child{display:none}
+  }
   @media(max-width:560px){
     .workgrid{grid-template-columns:1fr}
     .tit{padding:44px 28px}
     .flogos{grid-template-columns:repeat(2,1fr)}
+    .eyebrow{flex-wrap:wrap;row-gap:4px}
+    .eyebrow h2{flex-basis:100%;order:2;font-size:20px}
+    .eyebrow .num{order:1}
+    .eyebrow .rule,.eyebrow .kicker{display:none}
+    .hero-arrow{display:none}
+    .hero p.lead{font-size:15px}
   }
 </style>
 </head>

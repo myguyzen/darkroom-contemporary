@@ -250,9 +250,16 @@
     .sc-grid{grid-template-columns:1fr;gap:40px;padding:56px 0}
     .fgrid{grid-template-columns:1fr;gap:34px}
   }
+  @media(max-width:640px){
+    .ubar .wrap > span:first-child{display:none}
+  }
   @media(max-width:560px){
     .team-grid{grid-template-columns:1fr}
     .pg-hero{height:clamp(360px,55vh,500px)}
+    .eyebrow{flex-wrap:wrap;row-gap:4px}
+    .eyebrow h2{flex-basis:100%;order:2;font-size:20px}
+    .eyebrow .num{order:1}
+    .eyebrow .rule,.eyebrow .kicker{display:none}
   }
 </style>
 </head>
@@ -304,7 +311,7 @@
     <div class="wrap inner">
       <span class="tag">Darkroom Contemporary</span>
       <h1 class="serif">Fifteen years making work<br>that <em>tours</em>.</h1>
-      <p class="sub">Cape Town–based contemporary performance creation. Live work, screen dance and dance film —<br>built for the stage and the world beyond it.</p>
+      <p class="sub">Cape Town–based contemporary performance creation. Live work, screen dance and dance film — built for the stage and the world beyond it.</p>
     </div>
   </div>
 

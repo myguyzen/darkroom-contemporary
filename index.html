@@ -34,13 +34,6 @@
     letter-spacing:.18em;text-transform:uppercase;color:rgba(238,237,233,.55);
     background:rgba(0,0,0,.35);border:1px dashed rgba(238,237,233,.25);
     padding:7px 12px;border-radius:2px}
-  .ph-tile{position:absolute;inset:0;background:linear-gradient(135deg,#2a2826 0%,#1a1817 100%);
-    border:1px dashed rgba(238,237,233,.2);display:flex;align-items:center;justify-content:center;text-align:center}
-  .ph-tile::before{content:"";position:absolute;inset:8px;border:1px dashed rgba(238,237,233,.08);pointer-events:none}
-  .ph-tile::after{content:"◇";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-    font:300 56px/1 var(--serif);color:rgba(238,237,233,.12)}
-  .ph-tile .ph-label{position:relative;z-index:1;font:500 10px/1.4 var(--sans);
-    letter-spacing:.16em;text-transform:uppercase;color:rgba(238,237,233,.55);padding:0 20px}
   .ph-logo{display:flex;align-items:center;justify-content:center;text-align:center;
     background:rgba(238,237,233,.04);border:1px dashed rgba(238,237,233,.18);
     font:500 11px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;
@@ -137,8 +130,8 @@
   .workgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
   .tile{cursor:default}
   .tile-img{position:relative;aspect-ratio:4/5;overflow:hidden}
-  .tile-img .ph-tile{transition:transform .5s ease}
-  .tile:hover .tile-img .ph-tile{transform:scale(1.04)}
+  .tile-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s ease;display:block}
+  .tile:hover .tile-img img{transform:scale(1.04)}
   .tile-cap{padding:14px 2px 18px;border-bottom:1px solid var(--line)}
   .tile-cap .t{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.2;color:var(--bone)}
   .see-work{display:inline-flex;align-items:center;gap:8px;font:500 11px/1 var(--sans);
@@ -364,28 +357,28 @@
       <div class="eyebrow"><span class="num">01</span><h2 class="serif">26/27 Season — at a glance</h2><span class="rule"></span><span class="kicker">Upcoming</span></div>
       <div class="workgrid">
         <div class="tile">
-          <div class="tile-img"><div class="ph-tile"><span class="ph-label">Image · autoplay</span></div></div>
+          <div class="tile-img"><img src="images/work/autoplay.jpg" alt="autoplay"></div>
           <div class="tile-cap">
             <div class="t serif">autoplay</div>
             <a class="see-work" href="#">See the work <span class="ar">→</span></a>
           </div>
         </div>
         <div class="tile">
-          <div class="tile-img"><div class="ph-tile"><span class="ph-label">Image · e.ID</span></div></div>
+          <div class="tile-img"><img src="images/work/eid.jpg" alt="e.ID"></div>
           <div class="tile-cap">
             <div class="t serif">e.ID</div>
             <a class="see-work" href="#">See the work <span class="ar">→</span></a>
           </div>
         </div>
         <div class="tile">
-          <div class="tile-img"><div class="ph-tile"><span class="ph-label">Image · Blue Funk</span></div></div>
+          <div class="tile-img"><img src="images/work/blue-funk.jpg" alt="Blue Funk"></div>
           <div class="tile-cap">
             <div class="t serif">Blue Funk</div>
             <a class="see-work" href="#">See the work <span class="ar">→</span></a>
           </div>
         </div>
         <div class="tile">
-          <div class="tile-img"><div class="ph-tile"><span class="ph-label">Image · Lacuna</span></div></div>
+          <div class="tile-img"><img src="images/work/lacuna.jpg" alt="Lacuna"></div>
           <div class="tile-cap">
             <div class="t serif">Lacuna</div>
             <a class="see-work" href="#">See the work <span class="ar">→</span></a>

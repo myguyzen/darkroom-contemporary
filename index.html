@@ -526,18 +526,46 @@
   // Hero sliding gallery
   var heroSlider = (function(){
     var track = document.getElementById('heroTrack');
-    var slides = document.querySelectorAll('.hero .slide');
+    var slides = Array.from(document.querySelectorAll('.hero .slide'));
+    var total = slides.length;
     var i = 0, timer;
-    function show(n){
-      i = (n + slides.length) % slides.length;
+
+    // Clone first slide and append for seamless loop
+    var clone = slides[0].cloneNode(true);
+    track.appendChild(clone);
+
+    function show(n, animate){
+      if(animate === false) track.style.transition = 'none';
+      else track.style.transition = '';
+      i = n;
       track.style.transform = 'translateX(-' + (i * 100) + '%)';
     }
+
+    // After sliding to the cloned first slide, silently snap back to real first
+    track.addEventListener('transitionend', function(){
+      if(i === total){
+        show(0, false);
+        // Force reflow so the removal of transition takes effect
+        track.getBoundingClientRect();
+        track.style.transition = '';
+      }
+    });
+
     function reset(){
       clearInterval(timer);
       timer = setInterval(function(){ show(i + 1); }, 6000);
     }
+
     reset();
-    return { go: function(d){ show(i + d); reset(); } };
+    return {
+      go: function(d){
+        var next = i + d;
+        // Wrap backwards: if going before first, jump to cloned-last position first
+        if(next < 0){ show(total, false); track.getBoundingClientRect(); next = total - 1; }
+        show(next);
+        reset();
+      }
+    };
   })();
 
   // Press quote rotator

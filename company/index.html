@@ -72,9 +72,10 @@
   .pg-hero{position:relative;height:clamp(400px,60vh,620px);overflow:hidden;
     background:#0e0d0c;display:flex;align-items:flex-end}
   .pg-hero .bg{position:absolute;inset:0;
-    background:radial-gradient(130% 120% at 65% 15%,#3a2a2c 0%,#241c1d 45%,#100d0d 100%)}
+    background-image:url('../images/hero-company/company-hero.jpg');
+    background-size:cover;background-position:center}
   .pg-hero .bg::after{content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.04) 40%,rgba(14,13,12,.9) 100%)}
+    background:linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.08) 40%,rgba(14,13,12,.92) 100%)}
   .pg-hero .ghost{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     font:300 96px/1 var(--serif);color:rgba(238,237,233,.04);letter-spacing:.3em;
     text-transform:uppercase;pointer-events:none;white-space:nowrap}
@@ -323,11 +324,10 @@
   <div class="pg-hero">
     <div class="bg"></div>
     <div class="ghost">DARKROOM</div>
-    <span class="ph-tag">Image placeholder · Hero</span>
     <div class="wrap inner">
       <span class="tag">Darkroom Contemporary</span>
       <h1 class="serif">Fifteen years making work<br>that <em>tours</em>.</h1>
-      <p class="sub">Cape Town–based contemporary performance creation. Live work, screen dance and dance film — built for the stage and the world beyond it.</p>
+      <p class="sub">Cape Town–based contemporary performance creation.<br>Live work, screen dance and dance film — built for the stage and the world beyond it.</p>
     </div>
   </div>
 
